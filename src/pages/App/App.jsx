@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
 import { Route, Redirect } from "react-router-dom";
+
+import "./App.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
@@ -60,15 +61,6 @@ class App extends Component {
     return (
       <>
         <NavBar user={user} handleLogout={this.handleLogout} />
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <main>
-              <h1>Welcome. This is an authorization template.</h1>
-            </main>
-          )}
-        />
         <Route
           exact
           path="/signup"
