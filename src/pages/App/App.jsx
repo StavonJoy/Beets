@@ -1,11 +1,11 @@
 import React, { Component } from "react";
+import "./App.css";
 import { Route, Redirect } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from "../Users/Users";
-import "./App.css";
 import * as messageAPI from '../../services/messages-api'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
