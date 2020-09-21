@@ -41,9 +41,9 @@ const NavBar = ({ user, handleLogout }) => {
             <li class="nav-item">
                 <a class="nav-link" href="/signup">Sign Up</a>
             </li>
-            {/* <li class="nav-item">
-                <a class="nav-link" href='http://localhost:8888' > Login to Spotify </a>
-            </li> */}
+            <li class="nav-item">
+                <a class="nav-link" href='http://localhost:3001/loginSpotify' > Login to Spotify </a>
+            </li>
             <a href="/"><img className="nav-logo" src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
           </ul>
           </div>
