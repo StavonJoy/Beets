@@ -27,10 +27,6 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token? true : false,
-      // nowPlaying: {
-      //   name: 'Not Checked', 
-      //   albumArt: '', 
-      //   artist: 'Not Checked'},
       spotifyAlbums: [],
       userAlbums: [],
       messages: [],
