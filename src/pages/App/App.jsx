@@ -15,6 +15,7 @@ import AddMessage from '../AddMessage/AddMessage'
 import SpotifyWebApi from 'spotify-web-api-js'
 // import ArtistSearch from '../ArtistSearch/ArtistSearch';
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
+import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -104,6 +105,9 @@ class App extends Component {
           path="/users"
           render={() => (user ? <Users /> : <Redirect to="/login" />)}
         />
+        <Route exact path='/playlists' render={() =>
+          <PlaylistIndex />
+        } />
 
         <Route exact path='/' render={() =>
           <LandingPage />
