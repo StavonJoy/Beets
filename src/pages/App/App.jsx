@@ -38,6 +38,7 @@ class App extends Component {
   handleLogout = () => {
     authService.logout();
     this.setState({ user: null });
+    this.props.history.push("/");
   };
 
   handleSignupOrLogin = () => {

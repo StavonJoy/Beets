@@ -40,7 +40,7 @@ async function login(req, res) {
 function createJWT(user) {
   return jwt.sign(
     { user }, // data payload
-    process.env.SECRET,
+    process.env.CLIENT_SECRET,
     { expiresIn: "24h" }
   );
 }
