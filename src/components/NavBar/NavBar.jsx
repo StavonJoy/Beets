@@ -8,9 +8,9 @@ const NavBar = ({ user, handleLogout }) => {
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="right">
             <ul class="nav justify-content-end">
-                <li class="nav-item">
+                {/* <li class="nav-item">
                     <a class="nav-link active" href="/messages">Message Board</a>
-                </li>
+                </li> */}
                 <li class="nav-item">
                     <a class="nav-link" href="/playlists">Playlist Index</a>
                 </li>
@@ -32,18 +32,18 @@ const NavBar = ({ user, handleLogout }) => {
         <nav>
           <div className="nav-wrapper">
           <ul class="nav justify-content-end">
-            <li class="nav-item">
+            {/* <li class="nav-item">
                 <a class="nav-link" href="/messages">Message Board</a>
-            </li>
+            </li> */}
             <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/signup">Sign Up</a>
             </li>
-            <li class="nav-item">
+            {/* <li class="nav-item">
                 <a class="nav-link" href='http://localhost:3001/loginSpotify' > Login to Spotify </a>
-            </li>
+            </li> */}
             <a href="/"><img className="nav-logo" src="https://i.imgur.com/qx7UQ7E.png" height='66' alt="logo" border="0"/></a>
           </ul>
           </div>

@@ -22,7 +22,7 @@ class LoginPage extends Component {
       await authService.login(this.state);
       // Let <App> know a user has signed up!
       handleSignupOrLogin();
-      history.push("/");
+      history.push("/spotifylogin");
     } catch (err) {
       // Use a modal or toast in your apps instead of alert
       alert('Invalid Credentials!');
