@@ -128,16 +128,6 @@ class App extends Component {
           />
         } />
         <NowPlaying />
-        {/* <div>
-          Now Playing: { this.state.nowPlaying.name }
-        </div>
-        <div>
-          <img alt='album art' src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
-        </div>
-        <button onClick={()=> this.handleGetNowPlaying()}>
-          Check Now Playing
-        </button>
-         */}
       </>
     );
   }
