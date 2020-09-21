@@ -7,6 +7,8 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+const jwt = require("jsonwebtoken");
+const SECRET = process.env.CLIENT_SECRET;
 
 require('dotenv').config();
 require('./config/database');
@@ -22,6 +24,27 @@ const authRouter = require('./routes/auth');
 // // require our socket.io module
 // var io = require('../io');
 // io.attach(server);
+
+module.exports = function (req, res, next) {
+  // Check for the token being sent in three different ways
+  let token = req.get("Authorization") || req.query.token || req.body.token;
+  if (token) {
+    // Remove the 'Bearer ' if it was included in the token header
+    token = token.replace("Bearer ", "");
+    // Check if token is valid and not expired
+    jwt.verify(token, SECRET, function (err, decoded) {
+      if (err) {
+        next(err);
+      } else {
+        // It's a valid token, so add user to req
+        req.user = decoded.user;
+        next();
+      }
+    });
+  } else {
+    next();
+  }
+};
 
 var generateRandomString = function(length) {
   var text = '';

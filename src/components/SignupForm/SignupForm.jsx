@@ -17,29 +17,29 @@ class SignupForm extends Component {
     });
   };
 
-  // handleSubmit = async (e) => {
-  //   const { history, updateMessage, handleSignupOrLogin } = this.props;
-  //   e.preventDefault();
-  //   try {
-  //     await authService.signup(this.state);
-  //     // Let <App> know a user has signed up!
-  //     handleSignupOrLogin();
-  //     history.push("/");
-  //   } catch (err) {
-  //     updateMessage(err.message);
-  //   }
-  // };
-
   handleSubmit = async (e) => {
+    const { history, updateMessage, handleSignupOrLogin } = this.props;
     e.preventDefault();
     try {
       await authService.signup(this.state);
-      this.props.handleSignupOrLogin();
-      this.props.history.push('/');
+      // Let <App> know a user has signed up!
+      handleSignupOrLogin();
+      history.push("/");
     } catch (err) {
-      this.props.updateMessage(err.message);
+      updateMessage(err.message);
     }
-  }
+  };
+
+  // handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await authService.signup(this.state);
+  //     this.props.handleSignupOrLogin();
+  //     this.props.history.push('/');
+  //   } catch (err) {
+  //     this.props.updateMessage(err.message);
+  //   }
+  // }
 
   isFormInvalid() {
     const { name, email, password, passwordConf } = this.state;
