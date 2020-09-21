@@ -13,7 +13,7 @@ require('./config/database');
 
 var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = 'http://localhost:3001/callback'; // Your redirect uri
 
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
@@ -22,6 +22,18 @@ const authRouter = require('./routes/auth');
 // // require our socket.io module
 // var io = require('../io');
 // io.attach(server);
+
+var generateRandomString = function(length) {
+  var text = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
+
+var stateKey = 'spotify_auth_state';
 
 app.use(cors());
 app.use(logger('dev'));
@@ -33,7 +45,11 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 
-app.get('/login', function(req, res) {
+app.use(express.static(__dirname + '/public'))
+   .use(cors())
+   .use(cookieParser());
+
+app.get('/loginSpotify', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);

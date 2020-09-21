@@ -8,15 +8,32 @@ import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
+import * as spotifyService from '../../services/spotifyService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
+import SpotifyWebApi from 'spotify-web-api-js'
+// import ArtistSearch from '../ArtistSearch/ArtistSearch';
+import NowPlaying from '../../components/NowPlaying/NowPlaying'
+const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
-  state = {
-    user: authService.getUser(),
-    messages: [],
-  };
+  constructor(){
+    super();
+    const params = this.getHashParams();
+    const token = params.access_token;
+    console.log(params);
+    if (token) {
+      spotifyApi.setAccessToken(token);
+    }
+    this.state = {
+      loggedIn: token? true : false,
+      spotifyAlbums: [],
+      userAlbums: [],
+      messages: [],
+      user: authService.getUser()
+    }
+  }
 
   handleLogout = () => {
     authService.logout();
@@ -47,14 +64,14 @@ class App extends Component {
     }), () => this.props.history.push('/messages'));
   }
 
-  // handleGetNowPlaying = async newPlayData => {
-  //   const response = await spotifyService.getNowPlaying(newPlayData);
-  //   console.log(response)
-  //   this.setState({nowPlaying: { 
-  //     name: response.item.name, 
-  //     albumArt: response.item.album.images[0].url
-  //   }})
-  // }
+  handleGetNowPlaying = async newPlayData => {
+    const response = await spotifyService.getNowPlaying(newPlayData);
+    console.log(response)
+    this.setState({nowPlaying: { 
+      name: response.item.name, 
+      albumArt: response.item.album.images[0].url
+    }})
+  }
 
   render() {
     const {user} = this.state
@@ -102,16 +119,7 @@ class App extends Component {
             user={this.state.user}
           />
         } />
-        {/* <div>
-          Now Playing: { this.state.nowPlaying.name }
-        </div>
-        <div>
-          <img alt='album art' src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
-        </div>
-        <button onClick={()=> this.handleGetNowPlaying()}>
-          Check Now Playing
-        </button> */}
-        
+        <NowPlaying />
       </>
     );
   }
