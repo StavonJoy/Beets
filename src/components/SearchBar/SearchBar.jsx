@@ -11,6 +11,10 @@ class SearchBar extends Component {
 // Need to write handle submit function. 
 // Where is this going?
 
+    handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.handleSongSearch(this.state.formData)
+    }
 
     handleChange = (e) => {
         const formData = {
@@ -25,7 +29,7 @@ class SearchBar extends Component {
     render() { 
         return ( 
             <div>
-                <label>Find an artist:</label>
+                <label>Find a song:</label>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         name='query'
