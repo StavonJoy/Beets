@@ -16,6 +16,7 @@ import SpotifyWebApi from 'spotify-web-api-js'
 // import ArtistSearch from '../ArtistSearch/ArtistSearch';
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
+import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -107,6 +108,9 @@ class App extends Component {
         />
         <Route exact path='/playlists' render={() =>
           <PlaylistIndex />
+        } />
+        <Route exact path='/spotifylogin' render={() =>
+          <SpotifyLogin />
         } />
 
         <Route exact path='/' render={() =>
