@@ -67,7 +67,7 @@ class NowPlaying extends Component {
             <button className="btn btn-dark" onClick={()=> this.handleGetNowPlaying()}>
                 Check Now Playing
             </button>
-            <button onClick={()=> this.getTopTracks()}>FUCKING WORK</button>
+            <button onClick={()=> this.getTopTracks()}>PLZ WORK</button>
         </div>
          );
     }
