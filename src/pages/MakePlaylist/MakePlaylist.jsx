@@ -29,7 +29,7 @@ class MakePlaylist extends Component {
                     <button>Start Playlist</button>
                 </form>
                 <SearchBar 
-                handleSongSearch = {this.state.handleSongSearch}/>
+                handleSongSearch = {this.handleSongSearch}/>
             </div>
          );
     }
