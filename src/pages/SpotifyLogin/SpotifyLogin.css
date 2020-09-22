@@ -1,0 +1,27 @@
+h1 {
+    margin: 30px;
+}
+
+a {
+    font-size: 30px;
+    color: magenta;
+}
+
+a:hover {
+    color: yellow;
+}
+
+p {
+    margin: 30px;
+    font-size: 20px;
+}
+
+.beets-pic {
+    width: 300px;
+    margin-top: 40px;
+}
+
+.beets-text {
+    margin-top: 5px;
+    font-size: 15px;
+}
