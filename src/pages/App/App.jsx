@@ -17,6 +17,7 @@ import SpotifyWebApi from 'spotify-web-api-js'
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
+import MakePlaylist from '../MakePlaylist/MakePlaylist'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -33,7 +34,8 @@ class App extends Component {
       spotifyAlbums: [],
       userAlbums: [],
       messages: [],
-      user: authService.getUser()
+      user: authService.getUser(),
+      spotifyToken: token
     }
   }
 
@@ -106,6 +108,9 @@ class App extends Component {
           path="/users"
           render={() => (user ? <Users /> : <Redirect to="/login" />)}
         />
+        <Route exact path='/playlists/add' render={() =>
+          <MakePlaylist />
+        } />
         <Route exact path='/playlists' render={() =>
           <PlaylistIndex />
         } />
@@ -128,7 +133,8 @@ class App extends Component {
             user={this.state.user}
           />
         } />
-        <NowPlaying />
+        <NowPlaying 
+          token = {this.state.spotifyToken} />
       </>
     );
   }
