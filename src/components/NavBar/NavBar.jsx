@@ -34,7 +34,7 @@ const NavBar = ({ user, handleLogout }) => {
       :
         <nav>
           <div className="nav-wrapper">
-          <ul clclassNameass="nav justify-content-end">
+          <ul className="nav justify-content-end">
             {/* <li class="nav-item">
                 <a class="nav-link" href="/messages">Message Board</a>
             </li> */}
