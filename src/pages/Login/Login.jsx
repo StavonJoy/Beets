@@ -33,31 +33,40 @@ class LoginPage extends Component {
     const {email, pw} = this.state
     return (
       <main className="Login">
-        <h3>Log In</h3>
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            autoComplete="off"
-            id="email"
-            value={email}
-            name="email"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="password"
-            autoComplete="off"
-            id="password"
-            value={pw}
-            name="pw"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <button className="btn green">Log In</button>&nbsp;&nbsp;&nbsp;
-          <Link className="btn red" to="/">
-            Cancel
-          </Link>
-        </form>
+        <div className="login-form">
+          <h3>Log In to Your Account</h3>
+          <form autoComplete="off" onSubmit={this.handleSubmit}>
+            <input
+              className="login-input"
+              type="text"
+              autoComplete="off"
+              id="email"
+              value={email}
+              name="email"
+              onChange={this.handleChange}
+              placeholder="Your Email Here"
+            />
+            {/* <label htmlFor="email">Email</label> */}
+            <br></br>
+            <input
+              className="login-input"
+              type="password"
+              autoComplete="off"
+              id="password"
+              value={pw}
+              name="pw"
+              onChange={this.handleChange}
+              placeholder="Your Password here"
+            />
+            {/* <label htmlFor="password">Password</label> */}
+            <br></br>
+            <button className="login-btn">Log In</button>&nbsp;&nbsp;&nbsp;
+            <br></br>
+            <Link className="cancel-btn" to="/">
+              Cancel
+            </Link>
+          </form> 
+        </div>
       </main>
     );
   }

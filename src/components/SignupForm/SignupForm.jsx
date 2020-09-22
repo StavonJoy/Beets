@@ -49,9 +49,10 @@ class SignupForm extends Component {
   render() {
     const { name, email, password, passwordConf } = this.state;
     return (
-      <div>
+      <div className="signup-form">
         <h3>Sign Up</h3>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
+          {/* <label htmlFor="name">Name</label> */}
           <input
             type="text"
             autoComplete="off"
@@ -59,8 +60,10 @@ class SignupForm extends Component {
             value={name}
             name="name"
             onChange={this.handleChange}
+            placeholder="Your Name Here"
+            className="form-input"
           />
-          <label htmlFor="name">Name</label>
+          <br></br>
           <input
             type="text"
             autoComplete="off"
@@ -68,8 +71,10 @@ class SignupForm extends Component {
             value={email}
             name="email"
             onChange={this.handleChange}
+            placeholder="Your Email Here"
+            className="form-input"
           />
-          <label htmlFor="email">Email</label>
+          <br></br>
           <input
             type="password"
             autoComplete="off"
@@ -77,8 +82,10 @@ class SignupForm extends Component {
             value={password}
             name="password"
             onChange={this.handleChange}
+            placeholder="Your Password Here"
+            className="form-input"
           />
-          <label htmlFor="password">Password</label>
+          <br></br>
           <input
             type="password"
             autoComplete="off"
@@ -86,11 +93,14 @@ class SignupForm extends Component {
             value={passwordConf}
             name="passwordConf"
             onChange={this.handleChange}
+            placeholder="Confirm Password"
+            className="form-input"
           />
-          <label htmlFor="confirm">Confirm Password</label>
+          <br></br>
           <button disabled={this.isFormInvalid()}>Sign Up</button>
           &nbsp;&nbsp;
-          <Link to="/">Cancel</Link>
+          <br></br>
+          <Link className="cancel-btn" to="/">Cancel</Link>
         </form>
       </div>
     );

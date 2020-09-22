@@ -1,6 +1,18 @@
 body {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  color: magenta;
+  background: rgb(55,55,55);
+  background: radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(0,0,0,1) 100%) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.App {
+  background: rgb(249,242,1);
+  background: linear-gradient(304deg, rgba(249,242,1,1) 0%, rgba(249,21,239,1) 100%);
 }
 
 .App-logo {
@@ -38,16 +50,21 @@ body {
   }
 }
 
+h1 {
+  color: magenta;
+  margin: 40px auto;
+}
+
 div, button {
   margin: 15px
 }
 
 .nav-link {
   font-size: 20px;
-  color: black;
+  color: magenta;
 }
 .nav-link:hover {
-  color: magenta;
+  color: yellow;
 }
 
 .nav-logo {
