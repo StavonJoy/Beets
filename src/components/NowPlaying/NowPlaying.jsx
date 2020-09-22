@@ -15,6 +15,7 @@ class NowPlaying extends Component {
      handleGetNowPlaying = async newPlayData => {
         const response = await spotifyService.getNowPlaying(newPlayData);
         console.log(response)
+        console.log(this.props.token)
         this.setState({nowPlaying: { 
           name: response.item.name, 
           albumArt: response.item.album.images[0].url,
@@ -22,6 +23,30 @@ class NowPlaying extends Component {
           link: response.item.external_urls.spotify
         }, notChecked: true})
       }
+
+      //This is all just test stuff for formatting and practicing where we can make these calls from.
+      // can we pass spotify tokens from the component to the service call via the handle function?
+    
+    // getTopTracks() {
+    //     return fetch("https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE/top-tracks?country=SE",
+    //             {
+    //                 headers: { 'Accept': 'application/json', 'content-type': 'application/json', 'Authorization': "Bearer " + this.props.token },
+    //             })
+    //             .then(res => {
+    //                 console.log(res, '<-- response object')
+    //                 return res.json();
+    //               })
+    //             }
+
+    // export function getAllUsers() {
+    //     return fetch(
+    //       BASE_URL,
+    //       {
+    //         headers: { 'Authorization': "Bearer " + tokenService.getToken() },
+    //       },
+    //       { mode: "cors" }
+    //     ).then((res) => res.json());
+    //   }
 
     render() { 
         const notChecked = this.state.notChecked;
@@ -39,9 +64,10 @@ class NowPlaying extends Component {
             </div> :
             <div></div>
              }
-            <button class="btn btn-dark" onClick={()=> this.handleGetNowPlaying()}>
+            <button className="btn btn-dark" onClick={()=> this.handleGetNowPlaying()}>
                 Check Now Playing
             </button>
+            <button onClick={()=> this.getTopTracks()}>FUCKING WORK</button>
         </div>
          );
     }

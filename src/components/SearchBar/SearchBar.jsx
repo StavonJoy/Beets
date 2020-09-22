@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 
-class SearchForm extends Component {
+class SearchBar extends Component {
     state = { 
         formData: {
             query: '',
         },
      };
+
+// This stuff absolutely does not work yet. 
+// Need to write handle submit function. 
+// Where is this going?
+
 
     handleChange = (e) => {
         const formData = {
@@ -20,6 +25,7 @@ class SearchForm extends Component {
     render() { 
         return ( 
             <div>
+                <label>Find an artist:</label>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         name='query'
@@ -34,4 +40,4 @@ class SearchForm extends Component {
     }
 }
  
-export default SearchForm;
+export default SearchBar;
