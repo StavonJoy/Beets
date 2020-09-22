@@ -1,5 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-js'
 const spotifyApi = new SpotifyWebApi();
+const baseUrl = "https://api.spotify.com/v1/search"
 
 export function getNowPlaying(){
     return spotifyApi.getMyCurrentPlaybackState()
@@ -17,4 +18,10 @@ export async function searchArtistNames(){
     }, function(err) {
       console.error(err);
     });
+}
+
+export function songSearch(formData){
+  return fetch(`${baseUrl}/q=name:${formData}&type=track`)
+  .then(res => res.json())
+  // .then(console.log(res))
 }

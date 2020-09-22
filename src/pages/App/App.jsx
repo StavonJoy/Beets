@@ -13,7 +13,7 @@ import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
 import SpotifyWebApi from 'spotify-web-api-js'
-// import ArtistSearch from '../ArtistSearch/ArtistSearch';
+import SongSearch from '../SongSearch/SongSearch';
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
@@ -114,6 +114,9 @@ class App extends Component {
         <Route exact path='/playlists' render={() =>
           <PlaylistIndex />
         } />
+        <Route exact path='/songsearch' render={() => 
+          <SongSearch />
+        }/>
         <Route exact path='/spotifylogin' render={() =>
           <SpotifyLogin />
         } />

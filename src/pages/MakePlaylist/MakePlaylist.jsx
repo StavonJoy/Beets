@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import * as spotifyService from '../../services/spotifyService'
+import * as SpotifyService from '../../services/spotifyService'
 import SearchBar from '../../components/SearchBar/SearchBar'
 
 class MakePlaylist extends Component {
@@ -8,10 +8,15 @@ class MakePlaylist extends Component {
         artists: []
      }
 
-    handleSearchArtistNames = async artistNames => {
-        const response = await spotifyService.searchArtistNames(artistNames);
-        console.log(response)
-        // this.setState({ artists: response })
+    // handleSearchArtistNames = async artistNames => {
+    //     const response = await spotifyService.searchArtistNames(artistNames);
+    //     console.log(response)
+    //     // this.setState({ artists: response })
+    // }
+    handleSongSearch = async (formData) => {
+        const songs = await SpotifyService.songSearch(formData)
+        console.log(songs)
+        // this.setState({songs: songs.results})
     }
 
     render() { 
@@ -24,7 +29,7 @@ class MakePlaylist extends Component {
                     <button>Start Playlist</button>
                 </form>
                 <SearchBar 
-                handleSearchArtistNames = {this.state.handleSearchArtistNames}/>
+                handleSongSearch = {this.state.handleSongSearch}/>
             </div>
          );
     }
