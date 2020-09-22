@@ -13,6 +13,7 @@ class SearchBar extends Component {
 
     handleSubmit = (e) => {
     e.preventDefault()
+    console.log('this works')
     this.props.handleSongSearch(this.state.formData)
     }
 

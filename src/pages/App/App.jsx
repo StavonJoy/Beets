@@ -23,19 +23,23 @@ const spotifyApi = new SpotifyWebApi();
 class App extends Component {
   constructor(){
     super();
-    const params = this.getHashParams();
-    const token = params.access_token;
-    console.log(params);
-    if (token) {
-      spotifyApi.setAccessToken(token);
-    }
     this.state = {
-      loggedIn: token? true : false,
+      loggedIn: false,
       spotifyAlbums: [],
       userAlbums: [],
       messages: [],
       user: authService.getUser(),
-      spotifyToken: token
+      spotifyToken: ''
+    }
+  }
+
+  componentDidMount() {
+    const params = this.getHashParams();
+    const token = params.access_token;
+    console.log(params);
+    if (token) {
+      this.setState({loggedIn: true})
+      spotifyApi.setAccessToken(token);
     }
   }
 
@@ -58,6 +62,7 @@ class App extends Component {
        hashParams[e[1]] = decodeURIComponent(e[2]);
        e = r.exec(q);
     }
+    this.setState({spotifyToken : hashParams.access_token})
     return hashParams;
   }
 
@@ -109,7 +114,8 @@ class App extends Component {
           render={() => (user ? <Users /> : <Redirect to="/login" />)}
         />
         <Route exact path='/playlists/add' render={() =>
-          <MakePlaylist />
+          <MakePlaylist 
+          token={this.state.spotifyToken}/>
         } />
         <Route exact path='/playlists' render={() =>
           <PlaylistIndex />
