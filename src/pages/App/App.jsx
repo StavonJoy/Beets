@@ -267,7 +267,7 @@ class App extends Component {
             />:
             <Redirect to='/login' />
           } />
-
+      </>
     );
   }
 }
