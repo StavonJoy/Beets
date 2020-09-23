@@ -22,6 +22,7 @@ function deleteOne(req, res) {
   
 function create(req, res) {
     req.body.postedBy = req.user._id
+    console.log('controller')
     Message.create(req.body)
         .then(message => { res.json(message) })
         .catch(err => { res.json(err) })

@@ -8,9 +8,9 @@ const NavBar = ({ user, handleLogout }) => {
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="right">
             <ul className="nav justify-content-end">
-                {/* <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link active" href="/messages">Message Board</a>
-                </li> */}
+                </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/spotifylogin">Playlist Index</a>
                 </li>

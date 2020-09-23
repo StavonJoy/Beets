@@ -18,6 +18,8 @@ import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
+// import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
+
 // const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -55,6 +57,7 @@ class App extends Component {
     }), () => this.props.history.push('/movies'));
   }
 
+
   handleLogout = () => {
     authService.logout();
     this.setState({ user: null });
@@ -80,6 +83,7 @@ class App extends Component {
 
   handleAddMessage = async newMessageData => {
     const newMessage = await messageAPI.create(newMessageData);
+    console.log(newMessage)
     newMessage.postedBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       messages: [...state.messages, newMessage]
@@ -93,6 +97,11 @@ class App extends Component {
       name: response.item.name, 
       albumArt: response.item.album.images[0].url
     }})
+  }
+
+  async componentDidMount() {
+    const messages = await messageAPI.getAll();
+    this.setState({ messages })
   }
 
   render() {

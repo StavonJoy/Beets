@@ -6,9 +6,6 @@ class AddMessage extends Component {
         invalidForm: true,
         formData: {
             topic: '',
-            postedBy: '',
-            replies: [],
-            dateAdded: '',
         }
     }
 
@@ -39,18 +36,13 @@ class AddMessage extends Component {
                     </div>
                     </div>
                     <div className="row">
-                    <div className="input-field col s12">
-                        <input name="dateAdded" id="date-added" type="date" className="active" value={this.state.formData.dateAdded} onChange={this.handleChange} required />
-                        <label htmlFor="dateAdded">Date Added</label>
-                    </div>
+
                     </div>
                     <button
                     type="submit"
-                    className="btn red"
+                    className="btn"
                     disabled={this.state.invalidForm}
-                    ><i className="material-icons left"></i>
-                                    Add Message
-                                </button>
+                    >Add Message</button>                              
                 </form>
                 </div>
             </>
