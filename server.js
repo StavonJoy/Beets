@@ -53,8 +53,7 @@ app.use('/api/playlists', playlistRouter)
 app.use('/api/messages', messageRouter)
 
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+   app.use(cookieParser());
 
 app.get('/loginSpotify', function(req, res) {
 

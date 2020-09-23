@@ -35,20 +35,6 @@ class App extends Component {
     }
   }
 
-  async componentDidMount() {
-    const playlists = await playlistAPI.getAll();
-    this.setState({playlists})
-    // const stateToken = this.state.spotifyToken
-    // console.log(stateToken)
-    // const params = this.getHashParams();
-    // const token = params.access_token;
-    // console.log(params);
-    // if (token) {
-    //   this.setState({loggedIn: true})
-    //   spotifyApi.setAccessToken(token);
-    // }
-  }
-
   handleAddPlaylist = async newPlaylistData => {
     const newPlaylist = await playlistAPI.create(newPlaylistData);
     newPlaylist.createdBy = { name: this.state.user.name, _id: this.state.user._id }
@@ -101,7 +87,8 @@ class App extends Component {
 
   async componentDidMount() {
     const messages = await messageAPI.getAll();
-    this.setState({ messages })
+    const playlists = await playlistAPI.getAll();
+    this.setState({ messages, playlists })
   }
 
   render() {

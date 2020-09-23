@@ -3,7 +3,7 @@ const router = express.Router();
 const messagesCtrl = require('../controllers/messages');
 
 /*---------- Public Routes ----------*/
-router.get('/', checkAuth, messagesCtrl.index)
+router.get('/', messagesCtrl.index)
 
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
