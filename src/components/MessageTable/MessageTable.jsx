@@ -2,7 +2,7 @@ import React from 'react'
 
 // import { Link } from 'react-router-dom';
 
-function MessageTable(message) {
+function MessageTable(props, message ) {
     return (
         <>
 
@@ -10,10 +10,10 @@ function MessageTable(message) {
 
                 <tbody>
                     <tr>
-                    <td>{message.topic}</td>
-                    <td>{message.postedBy}</td>
-                    <td>{message.replies}</td>
-                    <td>{message.createdAt}</td>
+                    <td>{props.message.topic}</td>
+                    <td>{props.message.postedBy.name}</td>
+                    <td>{props.message.replies.length}</td>
+                    <td>{props.message.createdAt.toLocaleString()}</td>
                     </tr>
                 </tbody>
 

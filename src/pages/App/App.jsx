@@ -84,8 +84,9 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    const messages = await messageAPI.getAll();
     const playlists = await playlistAPI.getAll();
-    this.setState({playlists})
+    this.setState({ messages, playlists})
     const stateToken = this.state.spotifyToken
     console.log(stateToken)
     const params = this.getHashParams();
@@ -152,10 +153,11 @@ class App extends Component {
         <Route exact path='/' render={() =>
           <LandingPage />
         } />
-        <Route exact path='/messages' render={() =>
+        <Route exact path='/messages' render={(location) =>
           <MessageBoard 
           messages = {this.state.messages}
           user={this.state.user}
+          location={location}
           />
         } />
         <Route 
