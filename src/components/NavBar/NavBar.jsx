@@ -14,8 +14,11 @@ const NavBar = ({ user, handleLogout }) => {
                 <li className="nav-item">
                     <a className="nav-link" href="/playlists">Playlist Index</a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <a className="nav-link" href="/playlists/add">Add Playlist</a>
+                </li> */}
+                <li className="nav-item">
+                    <a className="nav-link" href="/spotifylogin">Add Playlist</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/users">Users</a>
