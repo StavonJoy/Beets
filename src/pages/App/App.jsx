@@ -12,15 +12,13 @@ import * as spotifyService from '../../services/spotifyService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
-// import SpotifyWebApi from 'spotify-web-api-js'
+import SpotifyWebApi from 'spotify-web-api-js'
 import SongSearch from '../SongSearch/SongSearch';
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
-// import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
-
-// const spotifyApi = new SpotifyWebApi();
+const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
   constructor(){
@@ -31,7 +29,7 @@ class App extends Component {
       userAlbums: [],
       messages: [],
       user: authService.getUser(),
-      // spotifyToken: ''
+      spotifyToken: ''
     }
   }
 
@@ -86,9 +84,17 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const messages = await messageAPI.getAll();
     const playlists = await playlistAPI.getAll();
-    this.setState({ messages, playlists })
+    this.setState({playlists})
+    const stateToken = this.state.spotifyToken
+    console.log(stateToken)
+    const params = this.getHashParams();
+    const token = params.access_token;
+    console.log(params);
+    if (token) {
+      this.setState({loggedIn: true})
+      spotifyApi.setAccessToken(token);
+    }
   }
 
   render() {
