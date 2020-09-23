@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
-
 import "./App.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
@@ -8,6 +7,7 @@ import Login from "../Login/Login";
 import authService from "../../services/authService";
 import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
+import * as playlistAPI from '../../services/playlists-api'
 import * as spotifyService from '../../services/spotifyService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
@@ -17,8 +17,9 @@ import SongSearch from '../SongSearch/SongSearch';
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
-import MakePlaylist from '../MakePlaylist/MakePlaylist'
+import AddPlaylist from '../AddPlaylist/AddPlaylist'
 // import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
+
 // const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -26,23 +27,36 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      spotifyAlbums: [],
+      playlists: [],
       userAlbums: [],
       messages: [],
       user: authService.getUser(),
-      spotifyToken: ''
+      // spotifyToken: ''
     }
   }
 
-  // componentDidMount() {
-  //   const params = this.getHashParams();
-  //   const token = params.access_token;
-  //   console.log(params);
-  //   if (token) {
-  //     this.setState({loggedIn: true})
-  //     spotifyApi.setAccessToken(token);
-  //   }
-  // }
+  async componentDidMount() {
+    const playlists = await playlistAPI.getAll();
+    this.setState({playlists})
+    // const stateToken = this.state.spotifyToken
+    // console.log(stateToken)
+    // const params = this.getHashParams();
+    // const token = params.access_token;
+    // console.log(params);
+    // if (token) {
+    //   this.setState({loggedIn: true})
+    //   spotifyApi.setAccessToken(token);
+    // }
+  }
+
+  handleAddPlaylist = async newPlaylistData => {
+    const newPlaylist = await playlistAPI.create(newPlaylistData);
+    newPlaylist.createdBy = { name: this.state.user.name, _id: this.state.user._id }
+    this.setState(state => ({
+      movies: [...state.playlists, newPlaylist]
+    }), () => this.props.history.push('/movies'));
+  }
+
 
   handleLogout = () => {
     authService.logout();
@@ -121,11 +135,19 @@ class App extends Component {
           render={() => (user ? <Users /> : <Redirect to="/login" />)}
         />
         <Route exact path='/playlists/add' render={() =>
-          <MakePlaylist 
-          token={this.state.spotifyToken}/>
+          authService.getUser()?
+          <AddPlaylist 
+          handleAddPlaylist={this.handleAddPlaylist}
+          user={this.state.user}
+          token={this.state.spotifyToken}
+          />
+          :
+          <Redirect to='/login' />
         } />
         <Route exact path='/playlists' render={() =>
-          <PlaylistIndex />
+          <PlaylistIndex 
+            playlists = {this.state.playlists}
+            user = {this.state.user}/>
         } />
         <Route exact path='/songsearch' render={() => 
           <SongSearch />
@@ -143,11 +165,15 @@ class App extends Component {
           user={this.state.user}
           />
         } />
-        <Route exact path='/messages/add' render={() =>
+        <Route 
+          exact path='/messages/add' 
+          render={() =>
+            authService.getUser() ?
           <AddMessage 
             handleAddMessage={this.handleAddMessage}
             user={this.state.user}
-          />
+          />:
+          <Redirect to='/login' />
         } />
         <NowPlaying 
           token = {this.state.spotifyToken} />

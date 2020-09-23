@@ -12,14 +12,14 @@ const NavBar = ({ user, handleLogout }) => {
                     <a class="nav-link active" href="/messages">Message Board</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/playlists">Playlist Index</a>
+                    <a className="nav-link" href="/spotifylogin">Playlist Index</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/playlists/add">Add Playlist</a>
                 </li>
                 {/* <li className="nav-item">
-                    <a className="nav-link" href="/playlists/add">Add Playlist</a>
-                </li> */}
-                <li className="nav-item">
                     <a className="nav-link" href="/spotifylogin">Add Playlist</a>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <a className="nav-link" href="/users">Users</a>
                 </li>

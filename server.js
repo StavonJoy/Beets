@@ -19,6 +19,7 @@ var redirect_uri = 'http://localhost:3001/callback'; // Your redirect uri
 
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const playlistRouter = require('./routes/playlists')
 const messageRouter = require('./routes/messages')
 
 // var server = http.createServer(app);
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
+app.use('/api/playlists', playlistRouter)
 app.use('/api/messages', messageRouter)
 
 app.use(express.static(__dirname + '/public'))
@@ -118,7 +120,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/playlists/add/#' +
+        res.redirect('http://localhost:3000/playlists/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
