@@ -24,6 +24,7 @@ function MessageBoard(props) {
                     />
                 )}
             </Table>
+            <a href="/messages/add">Add Message</a>
 
             {/* <>
             {user && (user._id === tvshow.addedBy._id) &&
