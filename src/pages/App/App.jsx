@@ -38,7 +38,7 @@ class App extends Component {
     newPlaylist.createdBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       movies: [...state.playlists, newPlaylist]
-    }), () => this.props.history.push('/movies'));
+    }), () => this.props.history.push('/playlists'));
   }
 
 
