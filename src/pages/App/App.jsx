@@ -12,13 +12,14 @@ import * as spotifyService from '../../services/spotifyService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
-import SpotifyWebApi from 'spotify-web-api-js'
+// import SpotifyWebApi from 'spotify-web-api-js'
 import SongSearch from '../SongSearch/SongSearch';
 import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import MakePlaylist from '../MakePlaylist/MakePlaylist'
-const spotifyApi = new SpotifyWebApi();
+// import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
+// const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
   constructor(){
@@ -33,15 +34,15 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    const params = this.getHashParams();
-    const token = params.access_token;
-    console.log(params);
-    if (token) {
-      this.setState({loggedIn: true})
-      spotifyApi.setAccessToken(token);
-    }
-  }
+  // componentDidMount() {
+  //   const params = this.getHashParams();
+  //   const token = params.access_token;
+  //   console.log(params);
+  //   if (token) {
+  //     this.setState({loggedIn: true})
+  //     spotifyApi.setAccessToken(token);
+  //   }
+  // }
 
   handleLogout = () => {
     authService.logout();
@@ -68,6 +69,7 @@ class App extends Component {
 
   handleAddMessage = async newMessageData => {
     const newMessage = await messageAPI.create(newMessageData);
+    console.log(newMessage)
     newMessage.postedBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       messages: [...state.messages, newMessage]
@@ -81,6 +83,11 @@ class App extends Component {
       name: response.item.name, 
       albumArt: response.item.album.images[0].url
     }})
+  }
+
+  async componentDidMount() {
+    const messages = await messageAPI.getAll();
+    this.setState({ messages })
   }
 
   render() {

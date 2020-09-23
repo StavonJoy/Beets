@@ -18,7 +18,7 @@ function MessageTable(message) {
                 <tbody>
                     <tr>
                     <td>{message.topic}</td>
-                    <td>{message.postedBy.name}</td>
+                    <td>{message.postedBy.user.name}</td>
                     <td>{message.replies.length}</td>
                     <td>{message.dateAdded}</td>
                     </tr>
