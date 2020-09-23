@@ -10,6 +10,15 @@ export function create(playlist) {
     .then(res => res.json());
   }
 
+export function addToPlayList(newSong, playlistId) {
+    return fetch (`${BASE_URL}${playlistId}`, {
+        method: "PUT",
+        headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
+        body: JSON.stringify(newSong)
+    }, {mode: "cors"})
+    .then(res => res.json());
+  }
+
 export function getAll() {
     return fetch(BASE_URL, {
         mode: 'cors'
