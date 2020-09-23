@@ -8,7 +8,8 @@ import authService from "../../services/authService";
 import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
 import * as playlistAPI from '../../services/playlists-api'
-// import * as spotifyService from '../../services/spotifyService'
+import * as spotifyService from '../../services/spotifyService'
+import * as userService from '../../services/userService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
@@ -18,6 +19,8 @@ import SongSearch from '../SongSearch/SongSearch';
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
+import MyProfile from '../MyProfile/MyProfile'
+import EditProfile from '../EditProfile/EditProfile'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -91,6 +94,18 @@ class App extends Component {
   //     artist: response.item.artists[0].name,
   //     link: response.item.external_urls.spotify,
   //     notChecked: true}});
+
+  handleGetNowPlaying = async newPlayData => {
+    const response = await spotifyService.getNowPlaying(newPlayData);
+    console.log(response)
+    this.setState({nowPlaying: { 
+      name: response.item.name, 
+      albumArt: response.item.album.images[0].url
+    }})
+  }
+  // handleEditProfile = async updatedProfileData => {
+  //   const updatedProfile = 
+
   // }
 
   async componentDidMount() {
@@ -188,9 +203,33 @@ class App extends Component {
           />:
           <Redirect to='/login' />
         } />
+
         {/* <NowPlaying 
           token = {this.state.spotifyToken} /> */}
-      </>
+
+        <Route 
+          exact path='/myprofile'
+          render={() => 
+            authService.getUser() ?
+            <MyProfile 
+              users={this.state.users}
+              user={user}
+            />:
+            <Redirect to='/login' />
+          } />
+        <Route 
+          exact path='/editprofile'
+          render={({location}) => 
+            authService.getUser() ?
+            <EditProfile 
+              handleEditProfile={this.handleEditProfile}
+              location={location}
+              users={this.state.users}
+              user={user}
+            />:
+            <Redirect to='/login' />
+          } />
+
     );
   }
 }

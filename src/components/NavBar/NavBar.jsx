@@ -24,7 +24,7 @@ const NavBar = ({ user, handleLogout }) => {
                     <a className="nav-link" href="/users">Users</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/profile">My Profile</a>
+                    <a className="nav-link" href="/myprofile">My Profile</a>
                 </li>
                 <li className="nav-item">
                 <a href="/" className="nav-link" onClick={handleLogout}>Log Out</a>
