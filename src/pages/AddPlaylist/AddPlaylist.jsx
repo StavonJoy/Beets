@@ -35,17 +35,18 @@ class AddPlaylist extends Component {
                 <form ref={this.formRef} onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="vibe">What's Your Vibe?</label>
-                        <select name="vibe" className="form-control" id="exampleFormControlSelect1">
-                        <option>Bad Ass Bitch</option>
-                        <option>Happy</option>
-                        <option>Moody and Emo</option>
-                        <option>Quixotic</option>
-                        <option>Filled with Mirth</option>
-                        </select>
+                        <input value={this.state.formData.vibe} onChange={this.handleChange} name="vibe" className="form-control" id="exampleFormControlSelect1"></input>
+                        {/* <select value={this.state.formData.vibe} onChange={this.handleChange} name="vibe" className="form-control" id="exampleFormControlSelect1">
+                        <option name="vibe" value="Bad Ass Bitch">Bad Ass Bitch</option>
+                        <option name="vibe" value="Happy">Happy</option>
+                        <option name="vibe" value="Moody and Emo">Moody and Emo</option>
+                        <option name="vibe" value="Quixotic">Quixotic</option>
+                        <option name="vibe" value="Filled with Mirth">Filled with Mirth</option>
+                        </select> */}
                     </div>
                     <div className="form-group">
                         <label htmlFor="name">Name the Playlist:</label>
-                        <input name="name" type="text" className="form-control" id="exampleFormControlInput1"></input>
+                        <input value={this.state.formData.name} onChange={this.handleChange} name="name" type="text" className="form-control" id="exampleFormControlInput1"></input>
                     </div>
                     <button 
                     type="submit" 
