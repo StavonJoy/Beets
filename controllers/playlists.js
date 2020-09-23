@@ -23,7 +23,7 @@ function deleteOne(req, res) {
 }
   
 function create(req, res) {
-    req.body.postedBy = req.user._id
+    req.body.createdBy = req.user._id
     Playlist.create(req.body)
         .then(playlist => { res.json(playlist) })
         .catch(err => { res.json(err) })

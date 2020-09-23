@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const playlistsCtrl = require('../controllers/messages');
+const playlistsCtrl = require('../controllers/playlists');
 
 /*---------- Public Routes ----------*/
+router.get('/', playlistsCtrl.index);
 
 
 /*---------- Protected Routes ----------*/
