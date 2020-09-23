@@ -4,7 +4,7 @@ module.exports = {
     create,
     index,
     delete: deleteOne,
-    update
+    addToPlaylist
 }
 
 //why are we populating createdBy again?
@@ -29,9 +29,14 @@ function create(req, res) {
         .catch(err => { res.json(err) })
 }
 
-function update(req, res) {
-    Playlist.findByIdAndUpdate(req.params.id, req.body, {new: true})
+function addToPlaylist(req, res) {
+    console.log(req.body)
+    Playlist.findById(req.params.id)
     .populate('createdBy')
-    .then(playlist => {res.json(playlist)})
+    .then(playlist => {
+        playlist.songs.push(req.body)
+        playlist.save()
+        .then(() => res.json(playlist))
     .catch(err => {res.json(err)})
+    })
 }
