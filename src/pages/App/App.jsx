@@ -19,6 +19,7 @@ import SongSearch from '../SongSearch/SongSearch';
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
+import Replies from '../Replies/Replies'
 import MyProfile from '../MyProfile/MyProfile'
 import EditProfile from '../EditProfile/EditProfile'
 const spotifyApi = new SpotifyWebApi();
@@ -84,6 +85,30 @@ class App extends Component {
     }), () => this.props.history.push('/messages'));
   }
 
+
+  handleDeleteMessage = async id => {
+    if (authService.getUser()) {
+      await messageAPI.deleteOne(id);
+      this.setState(state => ({
+        messages: state.messages.filter(m => m._id !== id)
+      }), () => this.props.history.push('/messages'));
+    } else {
+      this.props.history.push('/login')
+    }
+  }
+
+  handleShowMessage = async id => {
+    console.log('handleshow')
+    if (authService.getUser()) {
+      await messageAPI.getOne(id);
+      this.setState(state => ({
+        messages: state.messages.filter(m => m._id !== id)
+      }), () => this.props.history.push('/replies'));
+    } else {
+      this.props.history.push('/login')
+    }
+  }
+
   // handleGetNowPlaying = async newPlayData => {
   //   const response = await spotifyService.getNowPlaying(newPlayData);
   //   console.log(response)
@@ -94,6 +119,7 @@ class App extends Component {
   //     artist: response.item.artists[0].name,
   //     link: response.item.external_urls.spotify,
   //     notChecked: true}});
+
 
   handleGetNowPlaying = async newPlayData => {
     const response = await spotifyService.getNowPlaying(newPlayData);
@@ -186,12 +212,24 @@ class App extends Component {
         <Route exact path='/' render={() =>
           <LandingPage />
         } />
-        <Route exact path='/messages' render={(location) =>
+        <Route exact path='/messages' render={() =>
           <MessageBoard 
+          handleDeleteMessage = {this.handleDeleteMessage}
           messages = {this.state.messages}
           user={this.state.user}
-          location={location}
           />
+        } />
+        <Route 
+          exact path='/replies' 
+          render={({ location }) =>
+            authService.getUser() ?
+          <Replies 
+            handleDeleteMessage = {this.handleDeleteMessage}
+            messages = {this.state.messages}
+            location={location}
+            user={this.state.user}
+          />:
+          <Redirect to='/login' />
         } />
         <Route 
           exact path='/messages/add' 

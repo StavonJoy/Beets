@@ -8,6 +8,7 @@ router.get('/', messagesCtrl.index)
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
 router.post('/', checkAuth, messagesCtrl.create);
+router.get('/:id',checkAuth, messagesCtrl.show)
 router.delete('/:id', checkAuth, messagesCtrl.delete);
 router.put('/:id', checkAuth, messagesCtrl.update)
 

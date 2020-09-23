@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const replySchema = new Schema({
     postedBy: String,
-    message: String
+    replyMessage: String
   });
 
 const messageSchema = new Schema({
@@ -12,6 +12,7 @@ const messageSchema = new Schema({
         required: true
     },
     postedBy: { type: Schema.Types.ObjectId, ref: 'User'},
+    post: String,
     replies: [replySchema],
 }, { timestamps: true })
 

@@ -32,3 +32,9 @@ export function update(message) {
     }, {mode: "cors"})
     .then(res => res.json());
 }
+
+export function getOne(message) {
+    console.log('get one')
+    return fetch(`${BASE_URL}${message._id}`, {mode: "cors"})
+    .then(res => res.json())
+}

@@ -4,7 +4,15 @@ module.exports = {
     create,
     index,
     delete: deleteOne,
-    update
+    update,
+    show
+}
+
+function show(req,res) {
+    console.log('show controller')
+    Message.findById(req.params.id)
+    .then(messages => {res.json(messages)})
+    .catch(err => {res.json(err)})
 }
 
 function index(req, res) {
