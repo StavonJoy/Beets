@@ -9,16 +9,19 @@ import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
 import * as playlistAPI from '../../services/playlists-api'
 import * as spotifyService from '../../services/spotifyService'
+import * as userService from '../../services/userService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
 import SpotifyWebApi from 'spotify-web-api-js'
 import SongSearch from '../SongSearch/SongSearch';
-import NowPlaying from '../../components/NowPlaying/NowPlaying'
+// import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
 import Replies from '../Replies/Replies'
+import MyProfile from '../MyProfile/MyProfile'
+import EditProfile from '../EditProfile/EditProfile'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -26,11 +29,18 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      playlists: [],
+      // playlists: [],
       userAlbums: [],
       messages: [],
       user: authService.getUser(),
-      spotifyToken: ''
+      spotifyToken: '',
+    //   nowPlaying: {
+    //     name: 'Not Checked', 
+    //     albumArt: '?', 
+    //     artist: 'Not Checked',
+    //     link: '',
+    //     notChecked: false
+    // }
     }
   }
 
@@ -75,6 +85,7 @@ class App extends Component {
     }), () => this.props.history.push('/messages'));
   }
 
+
   handleDeleteMessage = async id => {
     if (authService.getUser()) {
       await messageAPI.deleteOne(id);
@@ -98,6 +109,18 @@ class App extends Component {
     }
   }
 
+  // handleGetNowPlaying = async newPlayData => {
+  //   const response = await spotifyService.getNowPlaying(newPlayData);
+  //   console.log(response)
+  //   console.log(this.props.token)
+  //   this.setState({nowPlaying: { 
+  //     name: response.item.name, 
+  //     albumArt: response.item.album.images[0].url,
+  //     artist: response.item.artists[0].name,
+  //     link: response.item.external_urls.spotify,
+  //     notChecked: true}});
+
+
   handleGetNowPlaying = async newPlayData => {
     const response = await spotifyService.getNowPlaying(newPlayData);
     console.log(response)
@@ -106,11 +129,15 @@ class App extends Component {
       albumArt: response.item.album.images[0].url
     }})
   }
+  // handleEditProfile = async updatedProfileData => {
+  //   const updatedProfile = 
+
+  // }
 
   async componentDidMount() {
     const messages = await messageAPI.getAll();
-    const playlists = await playlistAPI.getAll();
-    this.setState({ messages, playlists})
+    // const playlists = await playlistAPI.getAll();
+    this.setState({ messages })
     const stateToken = this.state.spotifyToken
     console.log(stateToken)
     const params = this.getHashParams();
@@ -162,10 +189,18 @@ class App extends Component {
           :
           <Redirect to='/login' />
         } />
-        <Route exact path='/playlists' render={() =>
+        <Route exact path='/playlists' render={({history}) =>
           <PlaylistIndex 
             playlists = {this.state.playlists}
-            user = {this.state.user}/>
+            user = {this.state.user}
+            history = {history}
+            // handleGetNowPlaying={this.handleGetNowPlaying}
+            // nowPlayingName = {this.state.nowPlaying.name}
+            // nowPlayingArtist = {this.state.nowPlaying.artist}
+            // nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
+            // nowPlayingLink = {this.state.nowPlaying.link}
+            // nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
+             />
         } />
         <Route exact path='/songsearch' render={() => 
           <SongSearch />
@@ -206,9 +241,33 @@ class App extends Component {
           />:
           <Redirect to='/login' />
         } />
-        <NowPlaying 
-          token = {this.state.spotifyToken} />
-      </>
+
+        {/* <NowPlaying 
+          token = {this.state.spotifyToken} /> */}
+
+        <Route 
+          exact path='/myprofile'
+          render={() => 
+            authService.getUser() ?
+            <MyProfile 
+              users={this.state.users}
+              user={user}
+            />:
+            <Redirect to='/login' />
+          } />
+        <Route 
+          exact path='/editprofile'
+          render={({location}) => 
+            authService.getUser() ?
+            <EditProfile 
+              handleEditProfile={this.handleEditProfile}
+              location={location}
+              users={this.state.users}
+              user={user}
+            />:
+            <Redirect to='/login' />
+          } />
+
     );
   }
 }
