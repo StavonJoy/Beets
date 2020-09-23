@@ -1,9 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card'
 
-function PlaylistCard() {
+function PlaylistCard(props) {
     return(
-        <h3>Playlist Card</h3>
+        <Card style={{ width: '18rem' }}>
+        <Card.Body>
+            <Card.Title>{props.playlist.vibe}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+            <Card.Text>Title</Card.Text>
+            <a href="/usersprofile" className="btn btn-primary">{props.playlist.name}</a>
+            <button className='btn btn-warning'>Add To Playlist</button>
+        </Card.Body>
+    </Card>
     ) 
 }
 
