@@ -12,6 +12,8 @@ class NowPlaying extends Component {
             notChecked: false
      }
 
+            // playlist: songs = []
+
      handleGetNowPlaying = async newPlayData => {
         const response = await spotifyService.getNowPlaying(newPlayData);
         console.log(response)
@@ -21,32 +23,8 @@ class NowPlaying extends Component {
           albumArt: response.item.album.images[0].url,
           artist: response.item.artists[0].name,
           link: response.item.external_urls.spotify
-        }, notChecked: true})
+        }, notChecked: true});
       }
-
-      //This is all just test stuff for formatting and practicing where we can make these calls from.
-      // can we pass spotify tokens from the component to the service call via the handle function?
-    
-    // getTopTracks() {
-    //     return fetch("https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE/top-tracks?country=SE",
-    //             {
-    //                 headers: { 'Accept': 'application/json', 'content-type': 'application/json', 'Authorization': "Bearer " + this.props.token },
-    //             })
-    //             .then(res => {
-    //                 console.log(res, '<-- response object')
-    //                 return res.json();
-    //               })
-    //             }
-
-    // export function getAllUsers() {
-    //     return fetch(
-    //       BASE_URL,
-    //       {
-    //         headers: { 'Authorization': "Bearer " + tokenService.getToken() },
-    //       },
-    //       { mode: "cors" }
-    //     ).then((res) => res.json());
-    //   }
 
     render() { 
         const notChecked = this.state.notChecked;
