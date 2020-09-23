@@ -13,10 +13,6 @@ const messageSchema = new Schema({
     },
     postedBy: { type: Schema.Types.ObjectId, ref: 'User'},
     replies: [replySchema],
-    dateAdded: {
-        type: Date,
-        required: true
-    },
 }, { timestamps: true })
 
 module.exports = mongoose.model('Message', messageSchema);

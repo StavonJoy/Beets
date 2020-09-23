@@ -12,6 +12,7 @@ class AddMessage extends Component {
     formRef = React.createRef();
 
     handleSubmit = e => {
+        console.log('submitted')
         e.preventDefault();
         this.props.handleAddMessage(this.state.formData)
     }
