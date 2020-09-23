@@ -7,6 +7,7 @@ function MessageBoard(props) {
     return (
         <>
             <h1>Message Board</h1>
+            <a href="/messages/add">Add Message</a>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
@@ -24,7 +25,6 @@ function MessageBoard(props) {
                     />
                 )}
             </Table>
-            <a href="/messages/add">Add Message</a>
 
             {/* <>
             {user && (user._id === tvshow.addedBy._id) &&
