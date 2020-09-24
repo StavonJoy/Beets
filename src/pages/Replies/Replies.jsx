@@ -3,7 +3,7 @@ import './Replies.css'
 import { Link } from 'react-router-dom';
 
 
-function Replies(props, message, user) {
+function Replies(props, message, handleDeleteMessage) {
     return (
         <>
             <h1>Replies Page</h1>
