@@ -29,6 +29,7 @@ class EditProfile extends Component {
       <h1>edit page</h1>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
         <input name="name" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required></input>
+        <input name="bio" id="bio" type="text" value={this.state.formData.bio} onChange={this.handleChange}></input>
       <button
         type="submit"
         className="btn"
