@@ -22,6 +22,7 @@ import AddPlaylist from '../AddPlaylist/AddPlaylist'
 import Replies from '../Replies/Replies'
 import MyProfile from '../MyProfile/MyProfile'
 import EditProfile from '../EditProfile/EditProfile'
+import EditMessage from '../EditMessage/EditMessage'
 const spotifyApi = new SpotifyWebApi();
 
 class App extends Component {
@@ -107,6 +108,17 @@ class App extends Component {
     } else {
       this.props.history.push('/login')
     }
+  }
+
+  handleUpdateMessage = async updatedMessageData => {
+    const updatedMessage = await messageAPI.update(updatedMessageData);
+    const newMessagesArray = this.state.messages.map(m =>
+      m._id === updatedMessage._id ? updatedMessage : m
+    );
+    this.setState(
+      { messages: newMessagesArray },
+      () => this.props.history.push('/messages')
+    );
   }
 
   // handleGetNowPlaying = async newPlayData => {
@@ -231,6 +243,17 @@ class App extends Component {
           />:
           <Redirect to='/login' />
         } />
+        <Route
+          exact path='/editmessage' render={({ location }) =>
+            authService.getUser() ?
+              <EditMessage
+                handleUpdateMessage={this.handleUpdateMessage}
+                location={location}
+                user={this.state.user}
+              />
+              :
+              <Redirect to='/login' />
+          } />
         <Route 
           exact path='/messages/add' 
           render={() =>
@@ -267,7 +290,7 @@ class App extends Component {
             />:
             <Redirect to='/login' />
           } />
-
+      </>
     );
   }
 }

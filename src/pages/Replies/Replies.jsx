@@ -1,20 +1,33 @@
 import React from 'react'
 import './Replies.css'
+import { Link } from 'react-router-dom';
 
-function Replies(props, message) {
-    console.log(message)
+function Replies(props, message, user) {
+    console.log(props.location.state)
+    console.log(props.user._id)
+    console.log(props.location.state.postedBy._id)
+    console.log(props.location.state)
     return (
         <>
             <h1>Replies Page</h1>
             <h1>{props.location.state.topic}</h1>
             <p>{props.location.state.post}</p>
-            {/* <button type="submit" className="btn red" onClick={() => handleDeleteMessage(message._id)}>
-                          <i className="material-icons left">delete</i>    
-                                Delete Movie
-
-                Delete
-            </button> */}
-
+            {props.user && (props.user._id === props.location.state.postedBy._id) &&
+                <>
+                    <button type="submit" className="btn red" onClick={() => props.handleDeleteMessage(props.location.state._id)}>
+                        Delete
+                    </button>
+                    <Link 
+                        className="btn yellow black-text"
+                        to={{
+                            pathname: '/editmessage',
+                            state: props.location.state
+                        }}
+                    >
+                        Edit Message
+                    </Link>
+                </>
+            }
         </>
     )
 }
