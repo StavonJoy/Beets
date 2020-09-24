@@ -39,18 +39,19 @@ function Replies(props, reply, handleDeleteMessage, message, handleUpdateMessage
                     <th>Date Added:</th>
                     </tr>
                 </thead>
-                {props.location.state.replies.map(message =>
+                {props.location.state.replies.map((message, idx) =>
                     <ReplyTable 
                         key={reply._id}
                         handleUpdateMessage={props.handleUpdateMessage}
-                        reply={props.location.state}
+                        reply={props.location.state.replies[idx]}
                         user={props.user}
                     />
                 )}
             </Table>
             <AddReply 
                 handleUpdateMessage={props.handleUpdateMessage}
-                reply={props.location.state.replies}
+                reply={props.location.state}
+                messages = {props.messages}
             />
         </>
     )

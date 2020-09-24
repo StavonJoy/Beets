@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card'
 
-function PlaylistCard(props, { nowPlayingName, nowPlayingArtist, nowPlayingLink, nowPlayingAlbumArt }) {
+function PlaylistCard(props) {
     
     const newSong = { 
         name: props.nowPlayingName,

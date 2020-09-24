@@ -15,7 +15,7 @@ class AddReply extends Component {
     handleSubmit = e => {
         console.log('submitted')
         e.preventDefault();
-        this.props.handleUpdateMessage(this.state.formData, this.props.location.state._id)
+        this.props.handleUpdateMessage(this.state.formData, this.props.reply._id)
     }
 
     handleChange = e => {
@@ -40,7 +40,7 @@ class AddReply extends Component {
                     type="submit"
                     className="btn"
                     disabled={this.state.invalidForm}
-                    >Add Message</button>                              
+                    >Add Reply</button>                              
                 </form>
                 </div>
             </>

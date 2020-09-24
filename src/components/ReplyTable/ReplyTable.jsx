@@ -8,8 +8,8 @@ function ReplyTable(props, reply ) {
                 <tr>
                 
                 <td>{props.reply.replyMessage}</td>
-                <td>{props.reply.postedBy.name}</td>
-                <td>{props.reply.createdAt.toLocaleString()}</td>  
+                <td>{props.reply.postedBy}</td>
+                {/* <td>{props.reply.createdAt.toLocaleString()}</td>   */}
                     
                 </tr>
             </tbody>
