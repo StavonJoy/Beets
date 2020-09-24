@@ -50,21 +50,23 @@ class PlaylistIndex extends Component {
     
     render() { 
         return ( 
-            <div className=''>
-                {this.state.playlists.map(playlist =>
-                <PlaylistCard 
-                    key={playlist._id}
-                    playlist={playlist}
-                    user={this.props.user}
-                    nowPlayingName = {this.state.nowPlaying.name}
-                    nowPlayingArtist = {this.state.nowPlaying.artist}
-                    nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
-                    nowPlayingLink = {this.state.nowPlaying.link}
-                    nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
-                    handleAddNowPlaying = {this.handleAddNowPlaying}
-                    handleDeletePlaylist = {this.handleDeletePlaylist}
-            />
-            )}
+            <div>
+                <div className='playlists-div'>
+                    {this.state.playlists.map(playlist =>
+                    <PlaylistCard 
+                        key={playlist._id}
+                        playlist={playlist}
+                        user={this.props.user}
+                        nowPlayingName = {this.state.nowPlaying.name}
+                        nowPlayingArtist = {this.state.nowPlaying.artist}
+                        nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
+                        nowPlayingLink = {this.state.nowPlaying.link}
+                        nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
+                        handleAddNowPlaying = {this.handleAddNowPlaying}
+                        handleDeletePlaylist = {this.handleDeletePlaylist}
+                    />                    
+                    )}
+                </div>
                 <NowPlaying 
                     handleGetNowPlaying={this.handleGetNowPlaying}
                     nowPlayingName = {this.state.nowPlaying.name}
@@ -72,8 +74,8 @@ class PlaylistIndex extends Component {
                     nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
                     nowPlayingLink = {this.state.nowPlaying.link}
                     nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
-            />
-        </div>
+                />
+            </div>
          );
     }
 }

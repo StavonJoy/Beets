@@ -1,6 +1,8 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card'
+import Dropdown from 'react-bootstrap/Dropdown'
+import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown'
 
 function PlaylistCard(props) {
     
@@ -15,14 +17,25 @@ function PlaylistCard(props) {
         <Card style={{ width: '18rem' }}>
         <Card.Body>
             <Card.Title>{props.playlist.vibe}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-            <Card.Text>Title</Card.Text>
-            {props.playlist.songs.map(s =>
-                <div>
-                    {props.playlists}
-                </div>
-                )}
-            <a href="/usersprofile" className="btn btn-primary">{props.playlist.name}</a>
+            <Card.Text>{props.playlist.name}</Card.Text>
+            <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            Songs
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                        {props.playlist.songs.map((s, idx) =>
+                <PlaylistDropdown 
+                song={s}
+                key={idx}
+                playlist={props.playlist}
+                />
+            )}
+                        </Dropdown.Menu>
+                        </Dropdown>
+            
+
+                
             <button type="submit" className="btn red" onClick={() => props.handleDeletePlaylist(props.playlist._id)}>
                 Delete Playlist</button>
             {props.nowPlayingNotChecked ?
