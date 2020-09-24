@@ -43,7 +43,7 @@ class App extends Component {
     newPlaylist.createdBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       playlists: [...state.playlists, newPlaylist]
-    }), () => this.props.history.push('/playlists'));
+    }), () => this.props.history.push('/spotifylogin'));
   }
 
 
@@ -113,6 +113,26 @@ class App extends Component {
     );
   }
 
+  // handleGetNowPlaying = async newPlayData => {
+  //   const response = await spotifyService.getNowPlaying(newPlayData);
+  //   console.log(response)
+  //   console.log(this.props.token)
+  //   this.setState({nowPlaying: { 
+  //     name: response.item.name, 
+  //     albumArt: response.item.album.images[0].url,
+  //     artist: response.item.artists[0].name,
+  //     link: response.item.external_urls.spotify,
+  //     notChecked: true}});
+
+
+  handleGetNowPlaying = async newPlayData => {
+    const response = await spotifyService.getNowPlaying(newPlayData);
+    console.log(response)
+    
+    this.setState({nowPlaying: { 
+      name: response.item.name, 
+      albumArt: response.item.album.images[0].url
+    }})
   handleEditProfile = async updatedUserData => {
     const updatedUser = await userService.update(updatedUserData);
     const newUsersArray = this.state.users.map(u => 

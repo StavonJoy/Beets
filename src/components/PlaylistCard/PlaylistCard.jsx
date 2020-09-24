@@ -5,7 +5,6 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown'
 
 function PlaylistCard(props) {
-    
     const newSong = { 
         name: props.nowPlayingName,
         artist: props.nowPlayingArtist,
@@ -18,28 +17,32 @@ function PlaylistCard(props) {
         <Card.Body>
             <Card.Title>{props.playlist.vibe}</Card.Title>
             <Card.Text>{props.playlist.name}</Card.Text>
-            <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Songs
-                        </Dropdown.Toggle>
+            <Card.Img variant="top" src={props.playlist.songs[0] !== undefined ? props.playlist.songs[0].albumArt : 'https://i.imgur.com/JAaivc8.png'} />
+            
 
-                        <Dropdown.Menu>
-                        {props.playlist.songs.map((s, idx) =>
+
+            <Dropdown>
+                <Dropdown.Toggle variant="none" id="dropdown">
+                    Songs
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                {props.playlist.songs.map((s, idx) =>
                 <PlaylistDropdown 
                 song={s}
                 key={idx}
                 playlist={props.playlist}
                 />
             )}
-                        </Dropdown.Menu>
-                        </Dropdown>
+                </Dropdown.Menu>
+                </Dropdown>
             
 
                 
-            <button type="submit" className="btn red" onClick={() => props.handleDeletePlaylist(props.playlist._id)}>
+            <button type="submit" id="button" className="btn" onClick={() => props.handleDeletePlaylist(props.playlist._id)}>
                 Delete Playlist</button>
             {props.nowPlayingNotChecked ?
-            <button className='btn btn-warning' 
+            <button className='btn' id="button"
             onClick={() => props.handleAddNowPlaying(newSong, props.playlist._id)}
             >Add To Playlist</button>
             :
