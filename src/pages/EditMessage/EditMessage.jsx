@@ -47,12 +47,12 @@ render() {
                         className="btn green"
                         disabled={this.state.invalidForm}
                     >
-                        Update Movie
+                        Update Message
                     </button>
                     <Link 
                         className="btn red"
                         to={{
-                            pathname: '/movies'
+                            pathname: '/messages'
                         }}
                     >
                     Cancel
