@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function MyProfile(props, user) {
     return ( 
       <div className="profile">
-      <h1>My Profile</h1>
+      <h1 id="logo-1">My Profile</h1>
       <h2>name: {props.user.name}</h2>
       <p>Bio: {props.user.bio}</p>
         <Link

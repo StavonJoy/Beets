@@ -3,14 +3,25 @@
     height: 490px;
     margin: auto;
     border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 h1 {
-    font-size: 70px;
-    margin: 50px auto;
-}
+    margin: calc(50vh - 40px) auto 0 auto;
+    font-size: 65px;
+    font-weight: normal;
+    display: block;
+    height: auto;
+    text-align: center;
+  }
+  
+/* .landing-logo {
+      margin-top: 30px;
+      margin-bottom: 50px;
+    } */
 
-.landing-logo {
-    margin-top: 30px;
-    margin-bottom: 50px;
+#logo-1 {
+    color: white;
+    animation: neon 3s infinite;
 }

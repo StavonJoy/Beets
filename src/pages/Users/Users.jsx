@@ -16,7 +16,7 @@ class Users extends Component {
   render() {
     return (
       <>
-        <h1>Our Amazing Users</h1>
+        <h1 id="logo-1">Our Amazing Users</h1>
         <div className="users-div">
           {this.props.users.map((user) => (
             <Card style={{ width: '18rem' }}>

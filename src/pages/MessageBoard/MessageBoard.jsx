@@ -8,7 +8,7 @@ function MessageBoard(props, message) {
     return (
         <>
             <div className="message-board-div">
-                <h1>Message Board</h1>
+                <h1 id="logo-1">Message Board</h1>
                 <a href="/messages/add">Add Message</a>
                 <Table striped bordered hover variant="dark">
                     <thead>

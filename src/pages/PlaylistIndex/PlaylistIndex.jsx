@@ -51,6 +51,7 @@ class PlaylistIndex extends Component {
     render() { 
         return ( 
             <div>
+                <h1 id="logo-1">Playlists</h1>
                 <div className='playlists-div'>
                     {this.state.playlists.map(playlist =>
                     <PlaylistCard 
