@@ -13,7 +13,7 @@ class EditProfile extends Component {
   
   handleSubmit = e => {
     e.preventDefault();
-    this.handleEditProfile(this.state.formData);
+    this.props.handleEditProfile(this.state.formData);
   };
 
   handleChange = e => {
