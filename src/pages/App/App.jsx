@@ -128,7 +128,9 @@ class App extends Component {
     const messages = await messageAPI.getAll();
     const playlists = await playlistAPI.getAll();
     const users = await userService.getAllUsers();
-    this.setState({ messages, playlists, users })
+    this.setState({ messages })
+    this.setState({ users })
+    this.setState({ playlists })
     const stateToken = this.state.spotifyToken
     console.log(stateToken)
     const params = this.getHashParams();
@@ -217,6 +219,7 @@ class App extends Component {
             handleAddReply={this.handleAddReply}
             messages = {this.state.messages}
             location={location}
+            users={this.state.users}
             user={this.state.user}
           />:
           <Redirect to='/login' />
