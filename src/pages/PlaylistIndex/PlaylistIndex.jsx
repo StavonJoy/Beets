@@ -51,7 +51,6 @@ class PlaylistIndex extends Component {
     render() { 
 
         return ( 
-            <div>
             <div className="playlists-container">
                     <h1 id="logo-1">Playlists</h1>
                     <NowPlaying 
