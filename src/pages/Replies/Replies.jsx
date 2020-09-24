@@ -9,7 +9,7 @@ import ReplyTable from '../../components/ReplyTable/ReplyTable'
 function Replies(props, reply) {
     return (
         <>
-            <h1>Replies Page</h1>
+            <h1 id="logo-1">Replies Page</h1>
             <h4>{props.location.state.topic}</h4>
             <p>{props.location.state.post}</p>
             {props.user && (props.user._id === props.location.state.postedBy._id) &&

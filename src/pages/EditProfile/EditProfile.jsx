@@ -26,9 +26,11 @@ class EditProfile extends Component {
   render() { 
     return ( 
       <>
-      <h1>edit page</h1>
+      <h1 id="logo-1">Edit your profile</h1>
       <form ref={this.formRef} onSubmit={this.handleSubmit}>
+        <label for="name">Name:</label>
         <input name="name" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required></input>
+        <label for="bio">Bio:</label>
         <input name="bio" id="bio" type="text" value={this.state.formData.bio} onChange={this.handleChange}></input>
       <button
         type="submit"
