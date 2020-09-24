@@ -8,14 +8,13 @@ import authService from "../../services/authService";
 import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
 import * as playlistAPI from '../../services/playlists-api'
-import * as spotifyService from '../../services/spotifyService'
-// import * as userService from '../../services/userService'
+// import * as spotifyService from '../../services/spotifyService'
+import * as userService from '../../services/userService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
 import SpotifyWebApi from 'spotify-web-api-js'
 import SongSearch from '../SongSearch/SongSearch';
-// import NowPlaying from '../../components/NowPlaying/NowPlaying'
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
@@ -34,7 +33,8 @@ class App extends Component {
       messages: [],
       user: authService.getUser(),
       spotifyToken: '',
-      playlists: []
+      playlists: [],
+      users: []
     }
   }
 
@@ -79,13 +79,15 @@ class App extends Component {
     }), () => this.props.history.push('/messages'));
   }
 
-  handleAddReply = async newReplyData => {
-    const newReply = await messageAPI.create(newReplyData);
-    console.log(newReply)
-    newReply.postedBy = { name: this.state.user.name, _id: this.state.user._id }
-    this.setState(state => ({
-      replies: [...state.replies, newReply]
-    }), () => this.props.history.push('/replies'));
+  handleUpdateMessage = async updatedMessageData => {
+    const updatedMessage = await messageAPI.update(updatedMessageData);
+    const newMessagesArray = this.state.messages.map(m => 
+      m._id === updatedMessage._id ? updatedMessage : m
+    );
+    this.setState(
+      {messages: newMessagesArray},
+      () => this.props.history.push('/messages')
+    );
   }
 
 
@@ -100,20 +102,8 @@ class App extends Component {
     }
   }
 
-  handleShowMessage = async id => {
-    console.log('handleshow')
-    if (authService.getUser()) {
-      await messageAPI.getOne(id);
-      this.setState(state => ({
-        messages: state.messages.filter(m => m._id !== id)
-      }), () => this.props.history.push('/replies'));
-    } else {
-      this.props.history.push('/login')
-    }
-  }
-
-  handleUpdateMessage = async (updatedMessageData, messageId) => {
-    const updatedMessage = await messageAPI.update(updatedMessageData, messageId);
+  handleAddReply = async (updatedMessageData, messageId) => {
+    const updatedMessage = await messageAPI.reply(updatedMessageData, messageId);
     const newMessagesArray = this.state.messages.map(m =>
       m._id === updatedMessage._id ? updatedMessage : m
     );
@@ -143,16 +133,24 @@ class App extends Component {
       name: response.item.name, 
       albumArt: response.item.album.images[0].url
     }})
+  handleEditProfile = async updatedUserData => {
+    const updatedUser = await userService.update(updatedUserData);
+    const newUsersArray = this.state.users.map(u => 
+      u._id === updatedUser._id ? updatedUser : u
+    );
+    this.setState(
+      {users: newUsersArray},
+      () => this.props.history.push('/users')
+    );
   }
-  // handleEditProfile = async updatedProfileData => {
-  //   const updatedProfile = 
-
-  // }
 
   async componentDidMount() {
     const messages = await messageAPI.getAll();
     const playlists = await playlistAPI.getAll();
-    this.setState({ messages, playlists })
+    const users = await userService.getAllUsers();
+    this.setState({ messages })
+    this.setState({ users })
+    this.setState({ playlists })
     const stateToken = this.state.spotifyToken
     console.log(stateToken)
     const params = this.getHashParams();
@@ -192,7 +190,11 @@ class App extends Component {
         <Route
           exact
           path="/users"
-          render={() => (user ? <Users /> : <Redirect to="/login" />)}
+          render={() => (user ? 
+          <Users 
+          users={this.state.users}/> 
+          : 
+          <Redirect to="/login" />)}
         />
         <Route exact path='/playlists/add' render={() =>
           authService.getUser()?
@@ -234,9 +236,10 @@ class App extends Component {
             authService.getUser() ?
           <Replies 
             handleDeleteMessage = {this.handleDeleteMessage}
-            handleUpdateMessage={this.handleUpdateMessage}
+            handleAddReply={this.handleAddReply}
             messages = {this.state.messages}
             location={location}
+            users={this.state.users}
             user={this.state.user}
           />:
           <Redirect to='/login' />
@@ -262,10 +265,6 @@ class App extends Component {
           />:
           <Redirect to='/login' />
         } />
-
-        {/* <NowPlaying 
-          token = {this.state.spotifyToken} /> */}
-
         <Route 
           exact path='/myprofile'
           render={() => 

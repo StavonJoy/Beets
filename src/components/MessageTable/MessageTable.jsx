@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from 'react-router-dom';
 
-function MessageTable(props, message ) {
+function MessageTable(props) {
     console.log(props.message)
     return (
         <>

@@ -15,7 +15,7 @@ class AddReply extends Component {
     handleSubmit = e => {
         console.log('submitted')
         e.preventDefault();
-        this.props.handleUpdateMessage(this.state.formData, this.props.reply._id)
+        this.props.handleAddReply(this.state.formData, this.props.reply._id)
     }
 
     handleChange = e => {

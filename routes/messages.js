@@ -9,8 +9,9 @@ router.get('/', messagesCtrl.index)
 router.use(require("../config/auth"));
 router.post('/', checkAuth, messagesCtrl.create);
 router.get('/:id',checkAuth, messagesCtrl.show)
+router.put('/:id', checkAuth, messagesCtrl.update)
 router.delete('/:id', checkAuth, messagesCtrl.delete);
-router.put('/:id', checkAuth, messagesCtrl.addReply)
+router.post('/:id', checkAuth, messagesCtrl.addReply)
 
 /*---------- Auth Checker ----------*/
 function checkAuth(req, res, next) {
