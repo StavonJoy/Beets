@@ -112,8 +112,8 @@ class App extends Component {
     }
   }
 
-  handleUpdateMessage = async updatedMessageData => {
-    const updatedMessage = await messageAPI.update(updatedMessageData);
+  handleUpdateMessage = async (updatedMessageData, messageId) => {
+    const updatedMessage = await messageAPI.update(updatedMessageData, messageId);
     const newMessagesArray = this.state.messages.map(m =>
       m._id === updatedMessage._id ? updatedMessage : m
     );

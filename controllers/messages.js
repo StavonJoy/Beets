@@ -5,7 +5,8 @@ module.exports = {
     index,
     delete: deleteOne,
     update,
-    show
+    show,
+    addReply
 }
 
 function show(req,res) {
@@ -41,4 +42,16 @@ function update(req, res) {
     .populate('postedBy')
     .then(message => {res.json(message)})
     .catch(err => {res.json(err)})
+}
+
+function addReply(req, res) {
+    req.body.postedBy = req.user.name
+    Message.findById(req.params.id)
+    .populate('postedBy')
+    .then(message => {
+        message.replies.push(req.body)
+        message.save()
+        .then(() => res.json(message))
+    .catch(err => res.json(err))
+    })
 }

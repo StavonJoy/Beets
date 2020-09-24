@@ -24,11 +24,13 @@ return fetch(`${BASE_URL}${id}`, {
 .then(res => res.json());
 }
 
-export function update(message) {
-    return fetch(`${BASE_URL}${message._id}`, {
+export function update(reply, messageId) {
+    console.log(reply)
+    console.log(messageId)
+    return fetch(`${BASE_URL}${messageId}`, {
         method: "PUT",
         headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
-        body: JSON.stringify(message)
+        body: JSON.stringify(reply)
     }, {mode: "cors"})
     .then(res => res.json());
 }
