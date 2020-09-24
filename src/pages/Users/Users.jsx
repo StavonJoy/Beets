@@ -23,7 +23,7 @@ class Users extends Component {
                 <Card.Body>
                     <Card.Title>{user.name}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                    <Card.Text>Bio Goes Here</Card.Text>
+                    <Card.Text>{user.bio}</Card.Text>
                     <a href="/usersprofile" className="btn btn-primary">{user.name}'s Profile</a>
                 </Card.Body>
             </Card>
