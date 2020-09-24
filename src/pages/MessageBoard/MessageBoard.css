@@ -1,0 +1,22 @@
+.message-board-div {
+
+}
+
+th {
+    font-size: 20px;
+}
+
+td {
+    font-size: 20px;
+}
+
+a {
+    font-size: 22px;
+}
+
+Table {
+    max-width: 1600px;
+    align-items: center;
+    margin: auto;
+}
+

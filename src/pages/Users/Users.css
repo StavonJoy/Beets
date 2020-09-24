@@ -1,0 +1,51 @@
+.users-div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+@media (min-width: 700px) {
+    .users-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+  
+@media (min-width: 1000px) {
+    .users-div {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1300px) {
+    .users-div {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background-color: rgba(94, 94, 94, 0.664);
+}
+
+.card-title {
+    color: white;
+    font-size: 30px;
+}
+
+p {
+    color: white;
+}
+
+.btn.btn-primary {
+    color:white;
+    background-color: rgb(255, 0, 255);
+    font-weight: 900;
+}
+
+.btn.btn-primary:hover {
+  color:black;
+  background-color: rgb(255, 174, 0);
+
+}
