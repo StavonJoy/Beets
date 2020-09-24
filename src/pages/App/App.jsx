@@ -43,7 +43,7 @@ class App extends Component {
     newPlaylist.createdBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       playlists: [...state.playlists, newPlaylist]
-    }), () => this.props.history.push('/playlists'));
+    }), () => this.props.history.push('/spotifylogin'));
   }
 
 
@@ -138,6 +138,7 @@ class App extends Component {
   handleGetNowPlaying = async newPlayData => {
     const response = await spotifyService.getNowPlaying(newPlayData);
     console.log(response)
+    
     this.setState({nowPlaying: { 
       name: response.item.name, 
       albumArt: response.item.album.images[0].url
