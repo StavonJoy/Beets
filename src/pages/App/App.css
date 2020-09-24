@@ -1,9 +1,9 @@
 body {
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Questrial', sans-serif;
   color: magenta;
   background: rgb(55,55,55);
-  background: radial-gradient(circle, rgba(55,55,55,1) 0%, rgba(0,0,0,1) 100%) no-repeat center center fixed;
+  background: radial-gradient(circle, rgb(88, 88, 88) 0%, rgba(0,0,0,1) 100%) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -59,12 +59,23 @@ div, button {
   margin: 15px
 }
 
+button {
+  color:white;
+  background-color: rgb(255, 0, 255);
+  font-weight: 900;
+}
+
+button:hover {
+  color:white;
+  background-color: rgb(255, 208, 0);
+
+}
 .nav-link {
   font-size: 20px;
   color: magenta;
 }
 .nav-link:hover {
-  color: yellow;
+  color: rgb(190, 190, 2);
 }
 
 .nav-logo {

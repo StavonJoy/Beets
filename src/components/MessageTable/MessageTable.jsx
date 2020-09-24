@@ -13,7 +13,7 @@ function MessageTable(props, message ) {
                 <td>{props.message.postedBy.name}</td>
                 <td>{props.message.replies.length}</td>
                 <td>{props.message.createdAt.toLocaleString()}</td>
-                <td><Link
+                <td className="view-link"><Link
                     to={{
                         pathname: '/replies',
                         state: props.message

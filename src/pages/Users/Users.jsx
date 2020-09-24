@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getAllUsers } from "../../services/userService";
 import Card from 'react-bootstrap/Card'
+import './Users.css'
 
 class Users extends Component {
   state = {
@@ -15,21 +16,20 @@ class Users extends Component {
   render() {
     return (
       <>
-        <h1>Hello. This is a list of all the users.</h1>
-        {this.state.users.map((user) => (
-          <div>
-            
-              <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>{user.name}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                            <Card.Text>words</Card.Text>
-                            <a href="/usersprofile" className="btn btn-primary">{user.name}'s Profile</a>
-                        </Card.Body>
-                    </Card>
+        <h1>Our Amazing Users</h1>
+        <div className="users-div">
+          {this.state.users.map((user) => (
+            <Card style={{ width: '18rem' }}>
+                <Card.Body>
+                    <Card.Title>{user.name}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                    <Card.Text>words</Card.Text>
+                    <a href="/usersprofile" className="btn btn-primary">{user.name}'s Profile</a>
+                </Card.Body>
+            </Card>
 
-          </div>
-        ))}
+          ))}
+        </div>
       </>
     );
   }

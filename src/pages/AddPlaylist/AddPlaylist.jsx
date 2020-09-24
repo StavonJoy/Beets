@@ -30,7 +30,7 @@ class AddPlaylist extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="playlist-form">
                 <h2>Playlists go here</h2>
                 <form ref={this.formRef} onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -50,7 +50,7 @@ class AddPlaylist extends Component {
                     </div>
                     <button 
                     type="submit" 
-                    className="btn btn-warning"
+                    className="btn"
                     disable={this.state.invalidForm}>Start Playlist</button>
                 </form>
             </div>
