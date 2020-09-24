@@ -52,9 +52,8 @@ class PlaylistIndex extends Component {
 
         return ( 
             <div>
-                <h1 id="logo-1">Playlists</h1>
             <div className="playlists-container">
-                    <h1>Playlists</h1>
+                    <h1 id="logo-1">Playlists</h1>
                     <NowPlaying 
                         handleGetNowPlaying={this.handleGetNowPlaying}
                         nowPlayingName = {this.state.nowPlaying.name}
