@@ -9,7 +9,7 @@ import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
 import * as playlistAPI from '../../services/playlists-api'
 import * as spotifyService from '../../services/spotifyService'
-import * as userService from '../../services/userService'
+// import * as userService from '../../services/userService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
@@ -84,6 +84,15 @@ class App extends Component {
     this.setState(state => ({
       messages: [...state.messages, newMessage]
     }), () => this.props.history.push('/messages'));
+  }
+
+  handleAddReply = async newReplyData => {
+    const newReply = await messageAPI.create(newReplyData);
+    console.log(newReply)
+    newReply.postedBy = { name: this.state.user.name, _id: this.state.user._id }
+    this.setState(state => ({
+      replies: [...state.replies, newReply]
+    }), () => this.props.history.push('/replies'));
   }
 
 
@@ -237,6 +246,7 @@ class App extends Component {
             authService.getUser() ?
           <Replies 
             handleDeleteMessage = {this.handleDeleteMessage}
+            handleUpdateMessage={this.handleUpdateMessage}
             messages = {this.state.messages}
             location={location}
             user={this.state.user}

@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import './AddMessage.css'
+import './AddReply.css'
 
-class AddMessage extends Component {
+class AddReply extends Component {
     state = { 
         invalidForm: true,
         formData: {
-            topic: '',
-            post: '',
+            replyMessage: '',
         }
     }
 
     formRef = React.createRef();
 
+
     handleSubmit = e => {
         console.log('submitted')
         e.preventDefault();
-        this.props.handleAddMessage(this.state.formData)
-        console.log(this.props)
+        this.props.handleUpdateMessage(this.state.formData, this.props.location.state._id)
     }
 
     handleChange = e => {
-
         const formData = {...this.state.formData, [e.target.name]: e.target.value };
         this.setState({
             formData,
@@ -31,16 +29,11 @@ class AddMessage extends Component {
     render() { 
         return ( 
             <>
-            <div className="AddMessage">
+            <div className="AddReply">
                 <form className="col s12" ref={this.formRef} onSubmit={this.handleSubmit}>
+                   
                     <div className="row">
-                    <div className="input-field col s12">
-                        <input name="topic" id="topic" type="text" className="active" value={this.state.formData.topic} onChange={this.handleChange} required />
-                        <label htmlFor="topic">Topic</label>
-                    </div>
-                    </div>
-                    <div className="row">
-                        <textarea name="post" id="post" type="text" className="active" value={this.state.formData.post} onChange={this.handleChange} cols="30" rows="10"></textarea>
+                        <textarea name="replyMessage" id="reply-message" type="text" className="active" value={this.state.formData.replyMessage} onChange={this.handleChange} required cols="30" rows="10"></textarea>
                     </div>
                     
                     <button
@@ -55,4 +48,4 @@ class AddMessage extends Component {
     }
 }
  
-export default AddMessage;
+export default AddReply;
