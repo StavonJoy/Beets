@@ -9,7 +9,6 @@ function ReplyTable(props, reply ) {
                 
                 <td>{props.reply.replyMessage}</td>
                 <td>{props.reply.postedBy}</td>
-                {/* <td>{props.reply.createdAt.toLocaleString()}</td>   */}
                     
                 </tr>
             </tbody>
