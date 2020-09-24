@@ -30,18 +30,11 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      // playlists: [],
       userAlbums: [],
       messages: [],
       user: authService.getUser(),
       spotifyToken: '',
-    //   nowPlaying: {
-    //     name: 'Not Checked', 
-    //     albumArt: '?', 
-    //     artist: 'Not Checked',
-    //     link: '',
-    //     notChecked: false
-    // }
+      playlists: []
     }
   }
 
@@ -148,8 +141,8 @@ class App extends Component {
 
   async componentDidMount() {
     const messages = await messageAPI.getAll();
-    // const playlists = await playlistAPI.getAll();
-    this.setState({ messages })
+    const playlists = await playlistAPI.getAll();
+    this.setState({ messages, playlists })
     const stateToken = this.state.spotifyToken
     console.log(stateToken)
     const params = this.getHashParams();
@@ -206,12 +199,6 @@ class App extends Component {
             playlists = {this.state.playlists}
             user = {this.state.user}
             history = {history}
-            // handleGetNowPlaying={this.handleGetNowPlaying}
-            // nowPlayingName = {this.state.nowPlaying.name}
-            // nowPlayingArtist = {this.state.nowPlaying.artist}
-            // nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
-            // nowPlayingLink = {this.state.nowPlaying.link}
-            // nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
              />
         } />
         <Route exact path='/songsearch' render={() => 
