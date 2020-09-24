@@ -38,6 +38,7 @@ class AddMessage extends Component {
                     </div>
                     <div className="row">
                         <input name="post" id="post" type="text" className="active" value={this.state.formData.post} onChange={this.handleChange} required rows="4" cols="30"/>
+                        <textarea name="post" id="" cols="30" rows="10"></textarea>
                     </div>
                     
                     <button
