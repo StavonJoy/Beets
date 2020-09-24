@@ -2,11 +2,8 @@ import React from 'react'
 import './Replies.css'
 import { Link } from 'react-router-dom';
 
+
 function Replies(props, message, user) {
-    console.log(props.location.state)
-    console.log(props.user._id)
-    console.log(props.location.state.postedBy._id)
-    console.log(props.location.state)
     return (
         <>
             <h1>Replies Page</h1>
