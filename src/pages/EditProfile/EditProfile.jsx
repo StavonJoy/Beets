@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./EditProfile.css"
 import {Link} from 'react-router-dom'
+// import * as userService from '../../services/userService'
 
 class EditProfile extends Component {
   state = { 
@@ -12,7 +13,7 @@ class EditProfile extends Component {
   
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleEditProfile(this.state.formData);
+    this.handleEditProfile(this.state.formData);
   };
 
   handleChange = e => {
