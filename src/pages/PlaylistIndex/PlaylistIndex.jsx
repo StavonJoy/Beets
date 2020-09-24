@@ -17,6 +17,13 @@ class PlaylistIndex extends Component {
         playlists: [],
      }
 
+     handleDeletePlaylist = async id => {
+          await playlistAPI.deleteOne(id);
+          this.setState(state => ({
+            playlist: this.state.playlists.filter(p => p._id !== id)
+          }), () => this.props.history.push('/playlists'));
+      }
+
      handleAddNowPlaying = async (newSong, playlistId) => {
         const updatedPlaylist = await playlistAPI.addToPlayList(newSong, playlistId)
         const newPlaylistArray = this.state.playlists.map(p =>
@@ -55,6 +62,7 @@ class PlaylistIndex extends Component {
                     nowPlayingLink = {this.state.nowPlaying.link}
                     nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
                     handleAddNowPlaying = {this.handleAddNowPlaying}
+                    handleDeletePlaylist = {this.handleDeletePlaylist}
             />
             )}
                 <NowPlaying 
@@ -71,28 +79,3 @@ class PlaylistIndex extends Component {
 }
  
 export default PlaylistIndex;
-
-// function PlaylistIndex(props) {
-//     return (
-//         <div className=''>
-//         {props.playlists.map(playlist =>
-//             <PlaylistCard 
-//                 key={playlist._id}
-//                 playlist={playlist}
-//                 handleDeleteMovie={props.handleDeleteMovie}
-//                 user={props.user}
-//             />
-//         )}
-//         <NowPlaying 
-//         handleGetNowPlaying={props.handleGetNowPlaying}
-//         nowPlayingName = {props.nowPlayingName}
-//         nowPlayingArtist = {props.nowPlayingArtist}
-//         nowPlayingAlbumArt = {props.nowPlayingAlbumArt}
-//         nowPlayingLink = {props.nowPlayingLink}
-//         nowPlayingNotChecked = {props.nowPlayingNotChecked}
-//         />
-//     </div>
-//     )
-// }
-
-// export default PlaylistIndex;
