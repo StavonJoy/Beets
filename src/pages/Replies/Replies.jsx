@@ -6,9 +6,7 @@ import Table from 'react-bootstrap/Table'
 import ReplyTable from '../../components/ReplyTable/ReplyTable'
 
 
-function Replies(props, reply, handleDeleteMessage, message, handleUpdateMessage) {
-    console.log(props.location.state.replies)
-    console.log(props.location.state)
+function Replies(props, reply) {
     return (
         <>
             <h1 id="logo-1">Replies Page</h1>
@@ -41,7 +39,7 @@ function Replies(props, reply, handleDeleteMessage, message, handleUpdateMessage
                 {props.location.state.replies.map((message, idx) =>
                     <ReplyTable 
                         key={reply._id}
-                        // handleAddReply={props.handleAddReply}
+                        handleAddReply={props.handleAddReply}
                         reply={props.location.state.replies[idx]}
                         user={props.user}
                     />
@@ -51,6 +49,7 @@ function Replies(props, reply, handleDeleteMessage, message, handleUpdateMessage
                 handleAddReply={props.handleAddReply}
                 reply={props.location.state}
                 messages = {props.messages}
+                user={props.user}
             />
         </>
     )

@@ -1,14 +1,19 @@
 .playlists-div {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     justify-items: center;
     justify-content: center;
     max-width: 1200px;
     margin: auto;
 }
 
+.nowplaying {
+    align-items: center;
+}
+
 .card {
     background-color: rgba(94, 94, 94, 0.664);
+    text-align: center;
 }
 
 .card-title {
@@ -20,10 +25,12 @@ p {
     color: white;
 }
 
-.btn.btn-primary {
+.btn.btn-dark {
+    margin-top: 20px;
     color:white;
     background-color: rgb(255, 0, 255);
     font-weight: 900;
+
 }
 
 .btn.btn-primary:hover {
@@ -32,20 +39,46 @@ p {
 
 }
 
+#button {
+    font-size: 15px;
+    font-weight: 900;
+    width: 140px;
+    margin: 5px;
+
+}
+
+#dropdown {
+    margin: auto;
+}
+
+.dropdown-item {
+    font-size: 20px;
+}
+
+h4 {
+    margin-bottom: 5px;
+    color: white;
+}
+
+h6 {
+    margin-bottom: 5px;
+    color: white;
+}
+
 @media (min-width: 700px) {
-    .users-div {
+    .playlists-div {
         grid-template-columns: repeat(2, 1fr);
     }
 }
   
 @media (min-width: 1000px) {
-    .users-div {
+    .playlists-div {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 1300px) {
-    .users-div {
+    .playlists-div {
         grid-template-columns: repeat(4, 1fr);
     }
 }

@@ -3,8 +3,8 @@ const spotifyApi = new SpotifyWebApi();
 const baseUrl = "https://api.spotify.com/v1/search"
 
 export function getNowPlaying(){
-    return spotifyApi.getMyCurrentPlaybackState()
-      }
+  return spotifyApi.getMyCurrentPlaybackState()
+}
 
 export async function testElvis() {
     return await spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE');

@@ -49,9 +49,20 @@ class PlaylistIndex extends Component {
     }
     
     render() { 
+
         return ( 
             <div>
                 <h1 id="logo-1">Playlists</h1>
+            <div className="playlists-container">
+                    <h1>Playlists</h1>
+                    <NowPlaying 
+                        handleGetNowPlaying={this.handleGetNowPlaying}
+                        nowPlayingName = {this.state.nowPlaying.name}
+                        nowPlayingArtist = {this.state.nowPlaying.artist}
+                        nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
+                        nowPlayingLink = {this.state.nowPlaying.link}
+                        nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
+                    />
                 <div className='playlists-div'>
                     {this.state.playlists.map(playlist =>
                     <PlaylistCard 
@@ -68,14 +79,6 @@ class PlaylistIndex extends Component {
                     />                    
                     )}
                 </div>
-                <NowPlaying 
-                    handleGetNowPlaying={this.handleGetNowPlaying}
-                    nowPlayingName = {this.state.nowPlaying.name}
-                    nowPlayingArtist = {this.state.nowPlaying.artist}
-                    nowPlayingAlbumArt = {this.state.nowPlaying.albumArt}
-                    nowPlayingLink = {this.state.nowPlaying.link}
-                    nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
-                />
             </div>
          );
     }
