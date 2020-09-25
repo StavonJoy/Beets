@@ -21,10 +21,9 @@ class Users extends Component {
           {this.props.users.map((user) => (
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                    <Card.Title>{user.name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                    <Card.Text>{user.bio}</Card.Text>
-                    <a href="/usersprofile" className="btn btn-primary">{user.name}'s Profile</a>
+                    <Card.Img variant="top" src={user.image} />
+                    <Card.Title className="user">{user.name}</Card.Title>
+                    <Card.Text className="user-bio">{user.bio}</Card.Text>
                 </Card.Body>
             </Card>
 

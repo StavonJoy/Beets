@@ -31,16 +31,18 @@ class AddMessage extends Component {
     render() { 
         return ( 
             <>
-            <div className="AddMessage">
+            <div className="AddMessage-form">
+                <h2>Add Message</h2>
                 <form className="col s12" ref={this.formRef} onSubmit={this.handleSubmit}>
                     <div className="row">
                     <div className="input-field col s12">
+                        <label htmlFor="topic">Topic: </label>
                         <input name="topic" id="topic" type="text" className="active" value={this.state.formData.topic} onChange={this.handleChange} required />
-                        <label htmlFor="topic">Topic</label>
                     </div>
                     </div>
                     <div className="row">
-                        <textarea name="post" id="post" type="text" className="active" value={this.state.formData.post} onChange={this.handleChange} cols="30" rows="10"></textarea>
+                  
+                        <textarea name="post" id="post" type="text" className="active" placeholder="Your post here..." value={this.state.formData.post} onChange={this.handleChange} cols="30" rows="6"></textarea>
                     </div>
                     
                     <button

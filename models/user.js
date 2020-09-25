@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
   bio: String,
+  image: String,
   // recentlyPlayed: {ObjectRefWhatever}
 }, {
   timestamps: true

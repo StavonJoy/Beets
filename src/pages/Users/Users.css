@@ -29,13 +29,19 @@
     background-color: rgba(94, 94, 94, 0.664);
 }
 
-.card-title {
-    color: white;
-    font-size: 30px;
+.user {
+    color: rgb(255, 0, 255);
+    font-size: 35px;
+
 }
 
-p {
+.user-bio {
     color: white;
+    font-size: 23px;
+}
+
+Card.Text {
+    font-size: 20px;
 }
 
 .btn.btn-primary {
