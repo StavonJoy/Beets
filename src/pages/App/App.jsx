@@ -117,7 +117,7 @@ class App extends Component {
     );
     this.setState(
       {users: newUsersArray},
-      () => this.props.history.push('/users')
+      () => this.props.history.push('/myprofile')
     );
   }
 

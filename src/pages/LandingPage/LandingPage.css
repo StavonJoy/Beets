@@ -1,9 +1,9 @@
 .landing-logo {
-    width: 500px;
-    height: 490px;
+    width: 700px;
+    height: 690px;
     margin: auto;
     border-radius: 5px;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
@@ -20,3 +20,4 @@ h1 {
     color: white;
     animation: neon 3s infinite;
 }
+
