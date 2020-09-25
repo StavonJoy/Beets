@@ -18,9 +18,10 @@ class Users extends Component {
                     <Card.Img variant="top" src={user.image} />
                     <Card.Title className="user">{user.name}</Card.Title>
                     <Card.Text className="user-bio">{user.bio}</Card.Text>
+                    <Card.Text className="user-favArtist">{user.favArtist}</Card.Text>
+                    <Card.Text className="user-favGenre">{user.favGenre}</Card.Text>
                 </Card.Body>
             </Card>
-
           ))}
         </div>
       </>

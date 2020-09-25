@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   bio: String,
   image: String,
+  favArtist: String,
+  favGenre: String,
 }, {
   timestamps: true
 });
