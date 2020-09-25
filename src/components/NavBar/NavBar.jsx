@@ -9,19 +9,19 @@ const NavBar = ({ user, handleLogout }) => {
             <ul id="nav-mobile" className="right">
             <ul className="nav justify-content-end">
                 <li className="nav-item">
-                    <a className="nav-link active" href="/messages">Message Board</a>
+                    <a className="nav-link active" href="/messages">Beet Forum</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/spotifylogin">Playlist Index</a>
+                    <a className="nav-link" href="/spotifylogin">Beet Playlists</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/playlists/add">Add Playlist</a>
+                    <a className="nav-link" href="/playlists/add">Create A Playlist</a>
                 </li>
                 {/* <li className="nav-item">
                     <a className="nav-link" href="/spotifylogin">Add Playlist</a>
                 </li> */}
                 <li className="nav-item">
-                    <a className="nav-link" href="/users">Users</a>
+                    <a className="nav-link" href="/users">See Users</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/myprofile">My Profile</a>

@@ -9,7 +9,6 @@ const playlistSchema = new Schema(
     createdBy: String,
     vibe: String,
     songs: [],
-    // collaborators: [String],
   },
   {
     timestamps: true,

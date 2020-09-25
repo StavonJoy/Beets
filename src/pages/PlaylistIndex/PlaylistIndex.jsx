@@ -17,6 +17,8 @@ class PlaylistIndex extends Component {
         playlists: [],
      }
 
+    reversedPlaylists = this.state.playlists.reverse()
+
      handleDeletePlaylist = async id => {
           await playlistAPI.deleteOne(id);
           this.setState(state => ({
@@ -49,7 +51,6 @@ class PlaylistIndex extends Component {
     }
     
     render() { 
-
         return ( 
             <div className="playlists-container">
                     <h1 id="logo-1">Playlists</h1>
@@ -62,7 +63,7 @@ class PlaylistIndex extends Component {
                         nowPlayingNotChecked = {this.state.nowPlaying.notChecked}
                     />
                 <div className='playlists-div'>
-                    {this.state.playlists.map(playlist =>
+                    {this.state.playlists.reverse().map(playlist =>
                     <PlaylistCard 
                         key={playlist._id}
                         playlist={playlist}
