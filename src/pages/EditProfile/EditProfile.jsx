@@ -41,6 +41,14 @@ class EditProfile extends Component {
             <label for="image">Profile picture:</label>
             <input name="image" id="image" type="text" value={this.state.formData.image} onChange={this.handleChange}></input>
           </div>
+          <div className="profilepic">
+            <label for="favGenre">Favorite Genre:</label>
+            <input name="favGenre" id="favGenre" type="text" value={this.state.formData.favGenre} onChange={this.handleChange}></input>
+          </div>
+          <div className="profilepic">
+            <label for="favArtist">Favorite Artist:</label>
+            <input name="favArtist" id="favArtist" type="text" value={this.state.formData.favArtist} onChange={this.handleChange}></input>
+          </div>
         <button
           type="submit"
           className="btn"

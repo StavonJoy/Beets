@@ -10,6 +10,8 @@ function MyProfile(props, user) {
         <img src={props.user.image} alt=""/>
         <h2>Name: {props.user.name}</h2>
         <h4>Bio: {props.user.bio}</h4>
+        <p>Favorite Genre: {props.user.favArtist}</p>
+        <p>Favorite Artist: {props.user.favGenre}</p>
           <Link
             className="btn"
             to={{
