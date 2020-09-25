@@ -6,8 +6,9 @@
 .profile {
   background-color: rgba(94, 94, 94, 0.664);
   margin: auto;
-  width: 600px;
-  height: 400px;
+  width: fit-content;
+  min-width: 500px;
+  height: fit-content;
   margin-top: 80px;
   border-radius: 5px;
 }
@@ -26,6 +27,15 @@ h2 {
 h4 {
   font-size: 40px;
   margin-bottom: 15px;
+}
+
+p {
+  margin: 8px;
+}
+
+img {
+  max-width: 200px;
+  max-height: 600px;
 }
 
 .btn {
