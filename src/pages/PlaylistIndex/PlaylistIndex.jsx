@@ -17,13 +17,16 @@ class PlaylistIndex extends Component {
         playlists: [],
      }
 
-    reversedPlaylists = this.state.playlists.reverse()
+      refreshPage() {
+        window.location.reload();
+      }
 
      handleDeletePlaylist = async id => {
           await playlistAPI.deleteOne(id);
           this.setState(state => ({
             playlist: this.state.playlists.filter(p => p._id !== id)
           }), () => this.props.history.push('/playlists'));
+          this.refreshPage()
       }
 
      handleAddNowPlaying = async (newSong, playlistId) => {
