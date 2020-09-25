@@ -27,18 +27,18 @@ handleChange = e => {
 render() {
     return (
         <>
-            <div className="EditMovie">
+            <div className="EditMessage-form">
+                <h2>Edit Message</h2>
                 <form className="col s12" ref={this.formRef} onSubmit={this.handleSubmit}>
                     <div className="row">
                         <div className="input-field col s12">
+                        <label className="active" htmlFor="topic_name">Topic: </label>
                         <input name="topic" id="topic_name" type="text" className="active" value={this.state.formData.topic} onChange={this.handleChange} required />
-                        <label className="active" htmlFor="topic_name">Topic</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                        <input name="post" id="cast" type="text" className="active" value={this.state.formData.post} onChange={this.handleChange} required/>
-                        <label className="active" htmlFor="post">Post</label>
+                        <textarea name="post" id="post" type="text" className="active" placeholder="Your post here..." value={this.state.formData.post} onChange={this.handleChange} cols="30" rows="6" required></textarea>
                         </div>
                     </div>
                     <button
