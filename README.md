@@ -1,7 +1,9 @@
 # Beets
 ## Unit 3 Project for General Assembly SEI
 
-Welcome to the Beet Farm.
+Night. Outside soft raindrops splash on the sidewalk. Pedestrians huddle under umbrellas. You're listening to [this](https://open.spotify.com/track/0qI1W6chJgvrSAzAkX9JBa?si=5DRUP_giQDKIfThUYJSRxw) and you see them scurry, cast under the mottled, effervescent light from an overhead streetlamp. Inside, you're on your third cup of coffee and you're drinking it black. You walk back to your desk and a thousand lines of finely combed code. A car drives by and your mind whirs in sychronicity with the world around you. You are a mystical being of light and darkness. Your code is magic and your soundtrack is the incantation to your marvelous twilight whim. Everything converges: you, the code, the evening, the music, and you wonder if anyone else has met the same serendipity this night.
+
+Welcome to the [Beet Farm](https://beets-base.herokuapp.com).
 
 ---
 ### The Team
@@ -9,14 +11,7 @@ Cory Spicer
 Kailah Konkel
 Stavon Boavida
 
----
-### Planning
-
 Check out our dope [trello](https://trello.com/b/OmWdemGM/beets)!
-
-![Wireframes](https://trello-attachments.s3.amazonaws.com/5f60e1f541776a8b86ed1882/5f616cdf839c2c1682f9840b/ef3ac7df0383b77ccb10044409f3e1cf/Beets_Wireframes.png "Wireframes")
-![ERD](https://trello-attachments.s3.amazonaws.com/5f60e1f541776a8b86ed1882/5f61681d0335f239a9d7c4e9/a08408ad7e0d63e41eae9c83e1b5da0c/ERD.jpg "ERD")
-
 
 ---
 ### Technologies Used
@@ -27,12 +22,24 @@ Check out our dope [trello](https://trello.com/b/OmWdemGM/beets)!
 - Node.js
 - Spotify API
 - Bootstrap
-- Sptoify Web API Node/JS
+- Spotify Web API Node/JS
+- 
 
 ---
 ### Let's get Vibing
 
+Check out the pages!
+![Playlist Page](https://i.imgur.com/SkNt9h7.png)
+
+![Messages](https://i.imgur.com/82aOJqj.png)
+
+![Add a Playlist](https://i.imgur.com/Hp7jW1d.png)
+
+![Users Page](https://i.imgur.com/AH9D1SX.png)
+
 ---
 ### Icebox
-Real-time chat, and the ability to search songs and add them to the playlist! 
-Being able to add/remove friends.
+- Real-time chat!
+- Search songs and add them to the playlist! 
+- Being able to add/remove friends and follow their playlists!
+- More amazing, unique icons!
