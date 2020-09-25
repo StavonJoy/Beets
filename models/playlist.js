@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const playlistSchema = new Schema(
   {
     name: String,
-    createdBy: String,
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User'},
     vibe: String,
     songs: [],
   },

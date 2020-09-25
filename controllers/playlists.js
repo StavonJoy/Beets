@@ -30,7 +30,6 @@ function create(req, res) {
 }
 
 function addToPlaylist(req, res) {
-    console.log(req.body)
     Playlist.findById(req.params.id)
     .populate('createdBy')
     .then(playlist => {
