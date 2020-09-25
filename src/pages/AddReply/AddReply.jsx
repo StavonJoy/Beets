@@ -31,7 +31,7 @@ class AddReply extends Component {
                 <form className="col s12" ref={this.formRef} onSubmit={this.handleSubmit}>
                    
                     <div className="row">
-                        <textarea name="replyMessage" id="reply-message" type="text" className="active" value={this.state.formData.replyMessage} onChange={this.handleChange} required cols="30" rows="10"></textarea>
+                        <textarea name="replyMessage" id="reply-message" type="text" className="active" value={this.state.formData.replyMessage} onChange={this.handleChange} required cols="30" rows="7"></textarea>
                     </div>
                     
                     <button

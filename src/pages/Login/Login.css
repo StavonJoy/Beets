@@ -29,8 +29,8 @@ input {
 }
 
 button {
-  background-color: magenta;
-  color: yellow;
+  color:white;
+  background-color: rgb(255, 0, 255);
   font-size: larger;
   font-weight: 200;
   border: magenta;
@@ -41,17 +41,17 @@ button {
 }
 
 button:hover {
-  background-color: yellow;
-  color: magenta;
+  color:black;
+  background-color: rgb(255, 174, 0);
 }
 
 .cancel-btn {
-  color: magenta;
+  color: rgb(255, 0, 255);
   font-weight: 900;
   font-size: 17px;
 }
 
 .cancel-btn:hover {
-  color: yellow;
+  color: rgb(255, 174, 0);
 }
 

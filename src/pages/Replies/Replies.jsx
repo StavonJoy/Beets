@@ -10,8 +10,10 @@ function Replies(props, reply) {
     return (
         <>
             <h1 id="logo-1">Replies Page</h1>
-            <h4>{props.location.state.topic}</h4>
-            <p>{props.location.state.post}</p>
+            <div className="message-div">
+                <h4>{props.location.state.topic}</h4>
+                <p>{props.location.state.post}</p>
+            </div>
             {props.user && (props.user._id === props.location.state.postedBy._id) &&
                 <>
                     <button type="submit" className="btn red" onClick={() => props.handleDeleteMessage(props.location.state._id)}>
@@ -29,7 +31,7 @@ function Replies(props, reply) {
                 </>
             }
             <h4>Replies</h4>
-            <Table striped bordered hover variant="dark">
+            <Table id="table" striped bordered hover variant="dark">
                 <thead>
                     <tr>
                     <th>Reply:</th>
@@ -45,12 +47,15 @@ function Replies(props, reply) {
                     />
                 )}
             </Table>
-            <AddReply 
-                handleAddReply={props.handleAddReply}
-                reply={props.location.state}
-                messages = {props.messages}
-                user={props.user}
-            />
+            <div className="addreply-div">
+                <h4>Add Reply</h4>
+                <AddReply 
+                    handleAddReply={props.handleAddReply}
+                    reply={props.location.state}
+                    messages = {props.messages}
+                    user={props.user}
+                />
+            </div>
         </>
     )
 }

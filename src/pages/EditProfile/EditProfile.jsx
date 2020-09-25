@@ -23,30 +23,41 @@ class EditProfile extends Component {
     });
 };
   render() { 
+    console.log(this.state.formData)
     return ( 
       <>
-      <h1 id="logo-1">Edit your profile</h1>
-      <form ref={this.formRef} onSubmit={this.handleSubmit}>
-        <label for="name">Name:</label>
-        <input name="name" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required></input>
-        <label for="bio">Bio:</label>
-        <input name="bio" id="bio" type="text" value={this.state.formData.bio} onChange={this.handleChange}></input>
-      <button
-        type="submit"
-        className="btn"
-        disabled={this.state.invalidForm}
-        >
-        Update Profile
-      </button>
-      </form>
-      <Link 
-        className="btn red"
-        to={{
-          pathname: '/myprofile'
-        }}
-      >
-      Cancel
-      </Link> 
+      <div className="editprofile-form">
+      <h1>Edit your profile</h1>
+        <form ref={this.formRef} onSubmit={this.handleSubmit}>
+          <div className="name">
+            <label for="name">Name:</label>
+            <input name="name" id="name" type="text" value={this.state.formData.name} onChange={this.handleChange} required></input>
+          </div>
+          <div className="bio">
+            <label for="bio">Bio:</label>
+            <input name="bio" id="bio" type="text" value={this.state.formData.bio} onChange={this.handleChange}></input>
+          </div>
+          <div className="profilepic">
+            <label for="image">Profile picture:</label>
+            <input name="image" id="image" type="text" value={this.state.formData.image} onChange={this.handleChange}></input>
+          </div>
+        <button
+          type="submit"
+          className="btn"
+          disabled={this.state.invalidForm}
+          >
+          Update Profile
+        </button>
+        <Link 
+          className="btn red"
+          to={{
+            pathname: '/myprofile'
+          }}
+          >
+        Cancel
+        </Link> 
+        </form>
+      </div>
       </>
      );
   }
