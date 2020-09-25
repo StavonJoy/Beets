@@ -2,7 +2,6 @@ import tokenService from '../services/tokenService';
 const BASE_URL = '/api/messages/';
 
 export function create(message) {
-    console.log('api worked')
     return fetch(BASE_URL, {
         method: "POST",
         headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken() },
@@ -25,8 +24,6 @@ return fetch(`${BASE_URL}${id}`, {
 }
 
 export function reply(reply, messageId) {
-    console.log(reply)
-    console.log(messageId)
     return fetch(`${BASE_URL}${messageId}`, {
         method: "POST",
         headers: {'content-type': 'application/json', 'Authorization': 'Bearer ' + tokenService.getToken()},
@@ -36,7 +33,6 @@ export function reply(reply, messageId) {
 }
 
 export function getOne(message) {
-    console.log('get one')
     return fetch(`${BASE_URL}${message._id}`, {mode: "cors"})
     .then(res => res.json())
 }

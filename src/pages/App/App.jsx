@@ -72,7 +72,6 @@ class App extends Component {
 
   handleAddMessage = async newMessageData => {
     const newMessage = await messageAPI.create(newMessageData);
-    console.log(newMessage)
     newMessage.postedBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       messages: [...state.messages, newMessage]
@@ -132,10 +131,8 @@ class App extends Component {
     this.setState({ users })
     this.setState({ playlists })
     const stateToken = this.state.spotifyToken
-    console.log(stateToken)
     const params = this.getHashParams();
     const token = params.access_token;
-    console.log(params);
     if (token) {
       this.setState({loggedIn: true})
       spotifyApi.setAccessToken(token);

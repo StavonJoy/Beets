@@ -22,11 +22,6 @@ const authRouter = require('./routes/auth');
 const playlistRouter = require('./routes/playlists')
 const messageRouter = require('./routes/messages')
 
-// var server = http.createServer(app);
-// // require our socket.io module
-// var io = require('../io');
-// io.attach(server);
-
 
 var generateRandomString = function(length) {
   var text = '';
@@ -115,7 +110,6 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          console.log(body);
         });
 
         // we can also pass the token to the browser to make requests from there

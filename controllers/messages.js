@@ -10,14 +10,12 @@ module.exports = {
 }
 
 function show(req,res) {
-    console.log('show controller')
     Message.findById(req.params.id)
     .then(messages => {res.json(messages)})
     .catch(err => {res.json(err)})
 }
 
 function index(req, res) {
-    console.log('index controller')
     Message.find({})
     .populate('postedBy')
     .then(messages => {res.json(messages)})

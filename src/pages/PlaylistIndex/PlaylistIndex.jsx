@@ -36,7 +36,6 @@ class PlaylistIndex extends Component {
 
      handleGetNowPlaying = async newPlayData => {
         const response = await spotifyService.getNowPlaying(newPlayData);
-        console.log(response)
         this.setState({nowPlaying: { 
           name: response.item.name, 
           albumArt: response.item.album.images[0].url,
