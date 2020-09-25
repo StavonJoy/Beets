@@ -23,7 +23,6 @@ export async function searchArtistNames(){
 export function songSearch(formData){
         // call token function save as tokenvariable
     const token = spotifyApi.getAccessToken()
-    console.log(token)
   return fetch(`${baseUrl}/q=name:${formData}&type=track`, 
   {headers: {'Authorization': `Bearer ${token}`}})
   .then(res => res.json())

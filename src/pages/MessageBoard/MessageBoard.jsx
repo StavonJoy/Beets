@@ -1,7 +1,6 @@
 import React from 'react'
 import MessageTable from '../../components/MessageTable/MessageTable'
 import Table from 'react-bootstrap/Table'
-// import { Link } from 'react-router-dom';
 import './MessageBoard.css'
 
 function MessageBoard(props, message) {

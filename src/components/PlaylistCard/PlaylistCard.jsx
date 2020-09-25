@@ -44,7 +44,7 @@ function PlaylistCard(props) {
                 </Dropdown>
             
 
-            {props.user._id === props.playlist.createdBy ? 
+            {props.user._id === props.playlist.createdBy._id ? 
             <button type="submit" id="button" className="btn" onClick={() => props.handleDeletePlaylist(props.playlist._id)}>
                 Delete Playlist</button> 
             : <div></div>

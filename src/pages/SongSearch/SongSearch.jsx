@@ -9,8 +9,6 @@ class SongSearch extends Component {
 
     handleSongSearch = async (formData) => {
         const songs = await SpotifyService.songSearch(formData)
-        console.log(songs)
-        // this.setState({songs: songs.results})
     }
 
     render() { 
