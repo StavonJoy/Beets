@@ -11,7 +11,6 @@ class AddReply extends Component {
 
     formRef = React.createRef();
 
-
     handleSubmit = e => {
         e.preventDefault();
         this.props.handleAddReply(this.state.formData, this.props.reply._id)

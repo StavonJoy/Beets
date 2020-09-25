@@ -6,15 +6,18 @@ Night. Outside soft raindrops splash on the sidewalk. Pedestrians huddle under u
 Welcome to the [Beet Farm](https://beets-base.herokuapp.com).
 
 ---
-### The Team
+## The Team
+
 Cory Spicer
+
 Kailah Konkel
+
 Stavon Boavida
 
 Check out our dope [trello](https://trello.com/b/OmWdemGM/beets)!
 
 ---
-### Technologies Used
+## Technologies Used
 - MongoDB Atlas
 - Mongoose
 - Express
@@ -23,12 +26,13 @@ Check out our dope [trello](https://trello.com/b/OmWdemGM/beets)!
 - Spotify API
 - Bootstrap
 - Spotify Web API Node/JS
-- 
+- [Neon CSS Animation](https://codepen.io/fossheim/pen/PoqKoLY) by Sarah Fossheim
 
 ---
-### Let's get Vibing
+## Let's get Vibing
 
 Check out the pages!
+
 ![Playlist Page](https://i.imgur.com/SkNt9h7.png)
 
 ![Messages](https://i.imgur.com/82aOJqj.png)
@@ -37,8 +41,11 @@ Check out the pages!
 
 ![Users Page](https://i.imgur.com/AH9D1SX.png)
 
+Deployed app can be found [here](https://beets-base.herokuapp.com)!
+
 ---
-### Icebox
+## Icebox
+
 - Real-time chat!
 - Search songs and add them to the playlist! 
 - Being able to add/remove friends and follow their playlists!

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { getAllUsers } from "../../services/userService";
 import Card from 'react-bootstrap/Card'
 import './Users.css'
 
@@ -7,11 +6,6 @@ class Users extends Component {
   state = {
     // users: [],
   };
-
-  async componentDidMount() {
-    // const users = await getAllUsers();
-    // this.setState({ users })
-  }
 
   render() {
     return (

@@ -30,17 +30,6 @@ class SignupForm extends Component {
     }
   };
 
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await authService.signup(this.state);
-  //     this.props.handleSignupOrLogin();
-  //     this.props.history.push('/');
-  //   } catch (err) {
-  //     this.props.updateMessage(err.message);
-  //   }
-  // }
-
   isFormInvalid() {
     const { name, email, password, passwordConf } = this.state;
     return !(name && email && password === passwordConf);
@@ -52,7 +41,6 @@ class SignupForm extends Component {
       <div className="signup-form">
         <h3>Sign Up</h3>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
-          {/* <label htmlFor="name">Name</label> */}
           <input
             type="text"
             autoComplete="off"

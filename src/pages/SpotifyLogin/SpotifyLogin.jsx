@@ -9,7 +9,7 @@ function SpotifyLogin() {
                 <a href="http://localhost:3001/loginSpotify">Login to Spotify</a>
                 <p>We appreciate your patience, to compensate, here's an adorable Beet illustration...</p>
                 <img className="beets-pic" src="https://i.imgur.com/JAaivc8.png" alt=""></img>
-                <p className="beets-text">Designed by Stavon Boavida</p>
+                <p className="beets-text">Image designed by Stavon Boavida and Tyler Ewart</p>
             </div>
 
         </>

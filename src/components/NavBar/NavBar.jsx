@@ -17,9 +17,6 @@ const NavBar = ({ user, handleLogout }) => {
                 <li className="nav-item">
                     <a className="nav-link" href="/playlists/add">Create A Playlist</a>
                 </li>
-                {/* <li className="nav-item">
-                    <a className="nav-link" href="/spotifylogin">Add Playlist</a>
-                </li> */}
                 <li className="nav-item">
                     <a className="nav-link" href="/users">See Users</a>
                 </li>
@@ -49,8 +46,7 @@ const NavBar = ({ user, handleLogout }) => {
           </div>
         </nav>
         } 
-
-            </>
+      </>
     )
   }
   export default NavBar;
