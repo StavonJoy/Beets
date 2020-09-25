@@ -7,8 +7,7 @@ function LandingPage() {
             <h1 id="logo-1">Welcome to Beets.</h1>
         <a href="http://localhost:3001/loginSpotify">
             <img className="landing-logo" src="https://i.imgur.com/qx7UQ7E.png" alt=""/>
-        </a>  
-
+        </a> 
         </>
     )
 }
