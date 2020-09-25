@@ -17,9 +17,13 @@ function PlaylistCard(props) {
         <Card.Body>
             <Card.Title>{props.playlist.vibe}</Card.Title>
             <Card.Text>{props.playlist.name}</Card.Text>
-            <a href={props.playlist.songs[0].link}>
+            {/* {props.playlist.songs[0].link ?
+            <a href={props.playlist.songs[0].link}> */}
             <Card.Img variant="top" src={props.playlist.songs[0] !== undefined ? props.playlist.songs[0].albumArt : 'https://i.imgur.com/JAaivc8.png'} />
-            </a>
+            {/* </a> 
+            :
+            <Card.Img variant="top" src={props.playlist.songs[0] !== undefined ? props.playlist.songs[0].albumArt : 'https://i.imgur.com/JAaivc8.png'} />
+            } */}
             
 
 
