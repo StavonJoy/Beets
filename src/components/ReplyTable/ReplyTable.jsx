@@ -1,7 +1,6 @@
 import React from 'react'
 
 function ReplyTable(props, reply ) {
-    console.log(props.reply)
     return (
         <>
             <tbody>

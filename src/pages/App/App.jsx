@@ -8,13 +8,11 @@ import authService from "../../services/authService";
 import Users from "../Users/Users";
 import * as messageAPI from '../../services/messages-api'
 import * as playlistAPI from '../../services/playlists-api'
-// import * as spotifyService from '../../services/spotifyService'
 import * as userService from '../../services/userService'
 import LandingPage from '../LandingPage/LandingPage'
 import MessageBoard from '../MessageBoard/MessageBoard'
 import AddMessage from '../AddMessage/AddMessage'
 import SpotifyWebApi from 'spotify-web-api-js'
-import SongSearch from '../SongSearch/SongSearch';
 import PlaylistIndex from '../PlaylistIndex/PlaylistIndex'
 import SpotifyLogin from "../SpotifyLogin/SpotifyLogin";
 import AddPlaylist from '../AddPlaylist/AddPlaylist'
@@ -72,7 +70,6 @@ class App extends Component {
 
   handleAddMessage = async newMessageData => {
     const newMessage = await messageAPI.create(newMessageData);
-    console.log(newMessage)
     newMessage.postedBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
       messages: [...state.messages, newMessage]
@@ -132,10 +129,8 @@ class App extends Component {
     this.setState({ users })
     this.setState({ playlists })
     const stateToken = this.state.spotifyToken
-    console.log(stateToken)
     const params = this.getHashParams();
     const token = params.access_token;
-    console.log(params);
     if (token) {
       this.setState({loggedIn: true})
       spotifyApi.setAccessToken(token);
@@ -193,9 +188,6 @@ class App extends Component {
             history = {history}
              />
         } />
-        <Route exact path='/songsearch' render={() => 
-          <SongSearch />
-        }/>
         <Route exact path='/spotifylogin' render={() =>
           <SpotifyLogin />
         } />

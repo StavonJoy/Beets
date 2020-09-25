@@ -25,7 +25,6 @@ handleChange = e => {
 
 
 render() {
-    console.log(this.state.formData)
     return (
         <>
             <div className="EditMessage-form">

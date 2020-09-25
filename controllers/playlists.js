@@ -7,8 +7,6 @@ module.exports = {
     addToPlaylist
 }
 
-//why are we populating createdBy again?
-
 function index(req, res) {
     Playlist.find({})
     .populate('createdBy')
@@ -30,7 +28,6 @@ function create(req, res) {
 }
 
 function addToPlaylist(req, res) {
-    console.log(req.body)
     Playlist.findById(req.params.id)
     .populate('createdBy')
     .then(playlist => {

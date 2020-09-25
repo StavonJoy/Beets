@@ -1,5 +1,4 @@
 import React from 'react'
-// import * as spotifyService from '../../services/spotifyService'
 
 
 const NowPlaying = (props) => {

@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   password: String,
   bio: String,
   image: String,
-  // recentlyPlayed: {ObjectRefWhatever}
 }, {
   timestamps: true
 });
