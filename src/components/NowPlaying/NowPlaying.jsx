@@ -16,7 +16,7 @@ const NowPlaying = (props) => {
             <img alt='album art' src={props.nowPlayingAlbumArt ? props.nowPlayingAlbumArt : ''} style={{ height: 150 }}/>
             </a>
             </div> :
-            <div></div>
+            <div>Play music on spotify to use this feature!</div>
             }
         </div>
      );
