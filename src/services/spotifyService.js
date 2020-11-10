@@ -4,6 +4,7 @@ const baseUrl = "https://api.spotify.com/v1/search"
 
 export function getNowPlaying(){
   return spotifyApi.getMyCurrentPlaybackState()
+  .catch (err => console.log('THIS RIGHT HERE' + err))
 }
 
 
