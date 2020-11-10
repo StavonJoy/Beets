@@ -19,7 +19,7 @@ function MessageBoard(props, message) {
                         <th>Details</th>
                         </tr>
                     </thead>
-                    {props.messages.reverse().map(message =>
+                    {props.messages.map(message =>
                         <MessageTable 
                             key={message._id}
                             handleDeleteMessage={props.handleDeleteMessage}
