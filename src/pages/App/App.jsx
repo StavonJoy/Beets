@@ -31,7 +31,7 @@ class App extends Component {
       messages: [],
       user: authService.getUser(),
       spotifyToken: '',
-      playlists: [],
+      // playlists: [],
       users: []
     }
   }
@@ -125,7 +125,7 @@ class App extends Component {
     const messages = await messageAPI.getAll();
     const playlists = await playlistAPI.getAll();
     const users = await userService.getAllUsers();
-    this.setState({ messages })
+    this.setState({ messages: messages.reverse() })
     this.setState({ users })
     this.setState({ playlists })
     const stateToken = this.state.spotifyToken

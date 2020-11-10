@@ -3,6 +3,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 function MessageTable(props) {
+
+    let timestamp = new Date(props.message.createdAt).toLocaleString()
+
     return (
         <>
             <tbody>
@@ -10,7 +13,7 @@ function MessageTable(props) {
                     <td>{props.message.topic}</td>
                     <td>{props.message.postedBy.name}</td>
                     <td>{props.message.replies.length}</td>
-                    <td>{props.message.createdAt.toLocaleString()}</td>
+                    <td>{timestamp}</td>
                     <td 
                         className="view-link">
                             <Link
