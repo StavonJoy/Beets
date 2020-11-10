@@ -5,7 +5,7 @@ const NowPlaying = (props) => {
     const notChecked = props.nowPlayingNotChecked;
     return ( 
         <div className="nowplaying">
-            <button className="btn btn-dark" onClick={()=> props.handleGetNowPlaying()}>
+            <button className="btn btn-dark" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Play music on Spotify to use this feature!" onClick={()=> props.handleGetNowPlaying()}>
                 Check Now Playing
             </button>
             {notChecked ?
@@ -16,7 +16,7 @@ const NowPlaying = (props) => {
             <img alt='album art' src={props.nowPlayingAlbumArt ? props.nowPlayingAlbumArt : ''} style={{ height: 150 }}/>
             </a>
             </div> :
-            <div>Play music on spotify to use this feature!</div>
+            <div></div>
             }
         </div>
      );

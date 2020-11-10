@@ -112,11 +112,11 @@ class App extends Component {
 
   handleEditProfile = async updatedUserData => {
     const updatedUser = await userService.update(updatedUserData);
-    const newUsersArray = this.state.users.map(u => 
-      u._id === updatedUser._id ? updatedUser : u
-    );
+    // const newUsersArray = this.state.users.map(u => 
+    //   u._id === updatedUser._id ? updatedUser : u
+    // );
     this.setState(
-      {users: newUsersArray},
+      {user: updatedUser},
       () => this.props.history.push('/myprofile')
     );
   }
@@ -217,7 +217,8 @@ class App extends Component {
           <Redirect to='/login' />
         } />
         <Route
-          exact path='/editmessage' render={({ location }) =>
+          exact path='/editmessage' 
+          render={({ location }) =>
             authService.getUser() ?
               <EditMessage
                 handleUpdateMessage={this.handleUpdateMessage}
@@ -242,20 +243,20 @@ class App extends Component {
           render={() => 
             authService.getUser() ?
             <MyProfile 
-              users={this.state.users}
-              user={user}
+              // users={this.state.users}
+              user={this.state.user}
             />:
             <Redirect to='/login' />
           } />
         <Route 
           exact path='/editprofile'
-          render={({location}) => 
+          render={({ location }) => 
             authService.getUser() ?
             <EditProfile 
               handleEditProfile={this.handleEditProfile}
               location={location}
-              users={this.state.users}
-              user={user}
+              // users={this.state.users}
+              user={this.state.user}
             />:
             <Redirect to='/login' />
           } />
