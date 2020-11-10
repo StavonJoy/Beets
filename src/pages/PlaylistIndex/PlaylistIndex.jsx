@@ -39,13 +39,18 @@ class PlaylistIndex extends Component {
 
      handleGetNowPlaying = async newPlayData => {
         const response = await spotifyService.getNowPlaying(newPlayData);
-        this.setState({nowPlaying: { 
-          name: response.item.name, 
-          albumArt: response.item.album.images[0].url,
-          artist: response.item.artists[0].name,
-          link: response.item.external_urls.spotify,
-          notChecked: true}});
-      }
+        try {
+            this.setState({nowPlaying: { 
+              name: response.item.name, 
+              albumArt: response.item.album.images[0].url,
+              artist: response.item.artists[0].name,
+              link: response.item.external_urls.spotify,
+              notChecked: true}});
+        } catch (error) {
+            this.props.history.push('/playlists')
+            alert("Play music on spotify to use this!")
+        }
+    }
     
     async componentDidMount() {
         const playlists = await playlistAPI.getAll();
