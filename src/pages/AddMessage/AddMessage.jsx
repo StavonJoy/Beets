@@ -39,7 +39,6 @@ class AddMessage extends Component {
                     </div>
                     </div>
                     <div className="row">
-                  
                         <textarea name="post" id="post" type="text" className="active" placeholder="Your post here..." value={this.state.formData.post} onChange={this.handleChange} cols="30" rows="6"></textarea>
                     </div>
                     

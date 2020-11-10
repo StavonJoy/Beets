@@ -31,7 +31,7 @@ class App extends Component {
       messages: [],
       user: authService.getUser(),
       spotifyToken: '',
-      playlists: [],
+      // playlists: [],
       users: []
     }
   }

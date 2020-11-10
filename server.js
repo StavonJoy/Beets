@@ -114,8 +114,8 @@ app.get('/callback', function(req, res) {
 
         // we can also pass the token to the browser to make requests from there
         // commented out line is for testing purposes
-        // res.redirect('http://localhost:3000/playlists/#' + 
-        res.redirect('https://beets-base.herokuapp.com/playlists/#' +
+        res.redirect('http://localhost:3000/playlists/#' + 
+        // res.redirect('https://beets-base.herokuapp.com/playlists/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
